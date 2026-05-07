@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { 
   Sun, 
   Moon, 
@@ -15,9 +15,13 @@ import {
   ChevronUp,
   MessageSquare,
   Phone,
-  Layout
+  Layout,
+  CheckCircle,
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import emailjs from '@emailjs/browser';
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -25,6 +29,11 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Contact form state
+  const formRef = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +66,28 @@ export default function App() {
 
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setFormStatus('loading');
+    try {
+      await emailjs.sendForm(
+        "service_tj0n4uq",
+        "template_rhqqryk",
+        formRef.current,
+        "K1iTogragd_yU6bjq",
+      );
+      setFormStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setFormStatus('idle'), 5000);
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }
+  };
+
   const navLinks = [
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Skills', href: '#skills', id: 'skills' },
@@ -83,8 +114,10 @@ export default function App() {
       }`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <a href="#home" className="text-xl font-bold text-accent tracking-tighter">
-              tama.dev<span className="cursor-blink"></span>
+            <a href="#home" className="flex items-center gap-1 group">
+              <span className="text-xl font-black text-accent tracking-tight">Rizky</span>
+              <span className="text-xl font-light text-primary tracking-tight">Pratama</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-accent mb-0.5 self-end group-hover:scale-125 transition-transform"></span>
             </a>
           </div>
 
@@ -667,13 +700,17 @@ export default function App() {
             {...fadeIn}
             className="bg-bg-elevated border border-color rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/5"
           >
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+            <form ref={formRef} className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-muted ml-1">Name</label>
                   <input
                     type="text"
+                    name="name"
                     placeholder="Your Name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
@@ -681,7 +718,11 @@ export default function App() {
                   <label className="text-xs font-bold uppercase tracking-widest text-muted ml-1">Email</label>
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email Address"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
@@ -690,23 +731,63 @@ export default function App() {
                 <label className="text-xs font-bold uppercase tracking-widest text-muted ml-1">Subject</label>
                 <input
                   type="text"
+                  name="title"
                   placeholder="Subject"
+                  required
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-muted ml-1">Message</label>
                 <textarea
+                  name="message"
                   rows={4}
                   placeholder="Tell me about your project..."
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors resize-none"
                 ></textarea>
               </div>
+
+              {/* Status feedback */}
+              <AnimatePresence>
+                {formStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-green-500/10 border border-green-500/30 text-green-500 text-sm font-medium"
+                  >
+                    <CheckCircle size={16} />
+                    Message sent! I'll get back to you soon.
+                  </motion.div>
+                )}
+                {formStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-accent/10 border border-accent/30 text-accent text-sm font-medium"
+                  >
+                    <AlertCircle size={16} />
+                    Failed to send. Please try again or email me directly.
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <button
                 type="submit"
-                className="w-full py-5 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 mt-4 shadow-lg shadow-accent/20"
+                disabled={formStatus === 'loading'}
+                className="w-full py-5 bg-accent hover:bg-accent-hover disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 mt-4 shadow-lg shadow-accent/20"
               >
-                Send Message <MessageSquare size={18} />
+                {formStatus === 'loading' ? (
+                  <><Loader2 size={18} className="animate-spin" /> Sending...</>
+                ) : (
+                  <>Send Message <MessageSquare size={18} /></>
+                )}
               </button>
             </form>
           </motion.div>
@@ -717,7 +798,11 @@ export default function App() {
       <footer className="bg-[#0D0D0D] text-[#E8E0D5] pt-20 pb-10 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
           <div>
-            <a href="#home" className="text-2xl font-bold text-accent tracking-tighter block mb-4">tama.dev</a>
+            <a href="#home" className="flex items-center gap-1 group mb-4">
+              <span className="text-2xl font-black text-accent tracking-tight">Rizky</span>
+              <span className="text-2xl font-light text-[#E8E0D5] tracking-tight">Pratama</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-accent mb-0.5 self-end group-hover:scale-125 transition-transform"></span>
+            </a>
             <p className="text-[#A09488] leading-relaxed max-w-xs">
               Building clean, scalable, and performant web applications for business efficiency.
             </p>

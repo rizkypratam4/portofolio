@@ -1,73 +1,108 @@
-# React + TypeScript + Vite
+# Rizky Pratama — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features a clean design with dark/light mode, smooth animations, and a functional contact form.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **Tailwind CSS v3**
+- **Motion** (Framer Motion) — animations
+- **Lucide React** — icons
+- **EmailJS** — contact form email delivery
+- **Vite** — build tool
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Dark / Light mode toggle
+- Responsive layout (mobile, tablet, desktop)
+- Smooth scroll with active section detection on navbar
+- Animated hero section with floating cards
+- Skills, Portfolio, Work Experience, Blog, and Contact sections
+- Timeline layout for work experience
+- Functional contact form via EmailJS
+- Scroll-to-top button
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js >= 18
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Clone the repository
+git clone https://github.com/rizkprtama/portofolio.git
+cd portofolio
+
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## EmailJS Setup
+
+The contact form uses [EmailJS](https://emailjs.com) to send emails without a backend.
+
+1. Create an account at [emailjs.com](https://emailjs.com)
+2. Add an Email Service (Gmail/Outlook)
+3. Create an Email Template with these variables:
+   - `{{name}}` — sender's name
+   - `{{email}}` — sender's email
+   - `{{title}}` — subject
+   - `{{message}}` — message body
+4. Replace the credentials in `src/App.tsx`:
+
+```ts
+await emailjs.sendForm(
+  'YOUR_SERVICE_ID',
+  'YOUR_TEMPLATE_ID',
+  formRef.current,
+  'YOUR_PUBLIC_KEY'
+);
+```
+
+## Project Structure
+
+```
+src/
+├── App.tsx        # Main component (all sections)
+├── index.css      # Global styles, Tailwind config, color system
+├── main.tsx       # React entry point
+└── assets/        # Static assets
+```
+
+## Color System
+
+The project uses a CSS variable-based color system with full dark/light mode support defined in `src/index.css`.
+
+| Token | Light | Dark |
+|---|---|---|
+| `--bg-base` | `#FAFAF8` | `#0D0D0D` |
+| `--accent` | `#CC342D` | `#CC342D` |
+| `--text-primary` | `#1A1A1A` | `#E8E0D5` |
+| `--text-secondary` | `#6B6360` | `#A09488` |
+
+## License
+
+MIT
