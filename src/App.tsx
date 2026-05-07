@@ -24,10 +24,12 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
+      setIsScrolled(window.scrollY > 10);
       
       const sections = ['home', 'about', 'skills', 'portfolio', 'experience', 'blog', 'contact'];
       for (const section of sections) {
@@ -56,7 +58,6 @@ export default function App() {
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
   const navLinks = [
-    { name: 'Home', href: '#home', id: 'home' },
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Skills', href: '#skills', id: 'skills' },
     { name: 'Portfolio', href: '#portfolio', id: 'portfolio' },
@@ -75,7 +76,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-base text-primary selection:bg-accent selection:text-white">
       {/* Navbar */}
-      <nav className={`fixed top-0 left-0 w-full z-50 bg-elevated border-b border-color transition-all duration-300`}>
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-elevated border-b border-color'
+          : 'bg-transparent border-b border-transparent'
+      }`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <a href="#home" className="text-xl font-bold text-accent tracking-tighter">
@@ -84,7 +89,7 @@ export default function App() {
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.id}
@@ -154,8 +159,8 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center section-padding pt-32 md:pt-20">
-        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+      <section id="home" className="min-h-screen flex items-center section-padding !pt-28 md:!pt-32">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -192,7 +197,7 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="hidden md:flex justify-center relative"
+            className="flex justify-center relative"
           >
             <div className="relative w-80 h-80 md:w-[400px] md:h-[400px] flex items-center justify-center">
               {/* Background radial glow */}
@@ -251,7 +256,7 @@ export default function App() {
 
       {/* About Section */}
       <section id="about" className="section-padding bg-base">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div {...fadeIn}>
             <div className="section-label">About me</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary">Focused on High-Performance Internal Systems</h2>
@@ -267,10 +272,10 @@ export default function App() {
 
           <motion.div 
             {...fadeIn}
-            className="bg-bg-surface border border-color rounded-3xl p-8 md:p-10"
+            className="bg-bg-surface border border-color rounded-3xl p-6 md:p-10 lg:mt-[2.75rem]"
           >
-            <h3 className="text-xl font-bold mb-8 text-primary">Quick Info</h3>
-            <div className="space-y-6">
+            <h3 className="text-xl font-bold mb-4 text-primary">Quick Info</h3>
+            <div className="space-y-5">
               {[
                 { icon: MapPin, label: 'Location', value: 'Kota Bekasi, Indonesia' },
                 { icon: Briefcase, label: 'Experience', value: '2 years' },
@@ -278,13 +283,13 @@ export default function App() {
                 { icon: Wrench, label: 'Main Stack', value: 'Laravel · JavaScript · MySQL' },
                 { icon: Mail, label: 'Email', value: 'rizky.pratama.tech@gmail.com' },
               ].map((info, idx) => (
-                <div key={idx} className="flex items-start gap-4">
-                  <div className="mt-1 w-10 h-10 rounded-lg bg-bg-muted flex items-center justify-center text-accent">
-                    <info.icon size={20} />
+                <div key={idx} className="flex items-center gap-3">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-bg-muted flex items-center justify-center text-accent">
+                    <info.icon size={16} />
                   </div>
-                  <div>
-                    <div className="text-xs text-muted font-semibold uppercase tracking-wider mb-1">{info.label}</div>
-                    <div className="text-primary font-medium">{info.value}</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-xs text-muted font-semibold uppercase tracking-wider mb-0.5">{info.label}</div>
+                    <div className="text-primary font-medium text-sm truncate">{info.value}</div>
                   </div>
                 </div>
               ))}
@@ -339,7 +344,7 @@ export default function App() {
               className="flex flex-col items-center"
             >
               <div className="mb-6">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-text-muted px-4 py-1.5 border border-border-color/50 rounded-full bg-bg-surface/50">
+                <span className="text-xs font-bold uppercase tracking-[0.2em]  px-4 py-1.5 border border-border-color/50 rounded-full bg-bg-surface/50">
                   {group.category}
                 </span>
               </div>
@@ -405,7 +410,7 @@ export default function App() {
               <motion.div
                 key={idx}
                 {...fadeIn}
-                className="group flex flex-col bg-bg-surface border border-border-color rounded-[2.5rem] overflow-hidden card-hover"
+                className="group flex flex-col bg-bg-surface border border-border-color rounded-[1rem] overflow-hidden card-hover"
               >
                 <div className="h-64 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-bg-surface to-transparent z-10 opacity-60"></div>
@@ -417,7 +422,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="p-8 md:p-10 pt-0 -mt-10 relative z-20">
+                <div className="pt-8 md:px-2 md:pt-8 pt-0 -mt-10 relative z-20">
                   <div className="rounded-3xl p-8">
                     <h3 className="text-2xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
                       {project.title}
@@ -427,9 +432,9 @@ export default function App() {
                       {project.description}
                     </p>
                     
-                    <div className="flex flex-wrap gap-2 mb-8">
+                    <div className="flex flex-wrap gap-4 mb-8">
                       {project.tech.map((t, i) => (
-                        <span key={i} className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted text-text-muted rounded-full border border-border-color/30">
+                        <span key={i} className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted  rounded-full border border-border-color/30">
                           {t}
                         </span>
                       ))}
@@ -522,22 +527,21 @@ export default function App() {
                 <div className="absolute -left-10 top-10 w-4 h-4 bg-accent rounded-full border-4 border-bg-surface z-10 md:hidden shadow-lg shadow-accent/50"></div>
                 <div className="absolute -left-8 top-0 bottom-0 w-px bg-border-strong md:hidden"></div>
 
-                <div className={`w-full md:w-5/12 ${idx % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                <div className={`w-full md:w-[45%] ${idx % 2 === 0 ? 'md:text-right md:pr-8 lg:pr-14' : 'md:text-left md:pl-8 lg:pl-14'}`}>
                   <div className={`flex flex-col ${idx % 2 === 0 ? 'md:items-end' : 'md:items-start'} mb-2`}>
-                   <h3 className="text-xl font-bold text-primary">{exp.role}</h3>
-                   <span className="mt-1 px-2 py-0.5 rounded bg-bg-muted text-text-muted text-[10px] font-bold uppercase tracking-wider w-fit">
-                    {exp.badge}
-                   </span>
-                  </div>
-                  <div className="text-accent font-bold mb-1">{exp.company}</div>
-                  <div className="text-text-muted text-sm flex items-center gap-2 mb-4 justify-start md:justify-start">
-                    <span className={`inline-flex items-center gap-1 ${idx % 2 === 0 ? 'md:flex-row-reverse' : 'flex-row'}`}>
-                      {exp.period} · {exp.location}
+                    <h3 className="text-xl font-bold text-primary">{exp.role}</h3>
+                    <span className="mt-1 px-2 py-0.5 rounded bg-bg-muted text-text-muted text-[10px] font-bold uppercase tracking-wider w-fit" style={{ border: '1px solid var(--border-strong)' }}>
+                      {exp.badge}
                     </span>
+                  </div>
+                  <div className="text-accent font-bold mb-2">{exp.company}</div>
+                  <div className={`flex flex-col gap-0.5 text-sm text-text-muted ${idx % 2 === 0 ? 'md:items-end' : 'md:items-start'}`}>
+                    <span>{exp.period}</span>
+                    <span>{exp.location}</span>
                   </div>
                 </div>
 
-                <div className="w-full md:w-5/12">
+                <div className={`w-full md:w-[45%] ${idx % 2 === 0 ? 'md:pl-8 lg:pl-14' : 'md:pr-8 lg:pr-14'}`}>
                   <div className="p-6 bg-bg-elevated border border-color rounded-2xl shadow-sm">
                     <ul className="space-y-3">
                       {exp.bullets.map((bullet, i) => (
@@ -596,9 +600,8 @@ export default function App() {
               <motion.article
                 key={idx}
                 {...fadeIn}
-                className="group flex flex-col p-8 bg-bg-surface border border-color rounded-3xl card-hover relative"
+                className="group flex flex-col p-8 bg-bg-surface border border-color border-t-2 border-t-accent/20 hover:border-t-accent rounded-3xl card-hover relative overflow-hidden transition-colors duration-300"
               >
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-accent/20 group-hover:bg-accent transition-colors duration-300"></div>
                 
                 <div className="flex items-center justify-between mb-6">
                   <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
@@ -632,7 +635,7 @@ export default function App() {
 
       {/* Contact Section */}
       <section id="contact" className="section-padding bg-surface">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
           <motion.div {...fadeIn}>
             <div className="section-label">Contact</div>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-primary">Let's get in touch</h2>
@@ -665,7 +668,7 @@ export default function App() {
             className="bg-bg-elevated border border-color rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/5"
           >
             <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-muted ml-1">Name</label>
                   <input
@@ -762,7 +765,7 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-10 right-10 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-accent-hover transition-colors z-40"
+            className="fixed bottom-6 right-6 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-accent-hover transition-colors z-40"
           >
             <ChevronUp size={24} />
           </motion.button>
