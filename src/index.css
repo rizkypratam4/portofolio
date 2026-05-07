@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-base: #FAFAF8;
+    --bg-surface: #F2EFE9;
+    --bg-elevated: #FFFFFF;
+    --bg-muted: #E8E3DA;
+    --accent: #CC342D;
+    --accent-hover: #B02B24;
+    --accent-subtle: #FAEAE9;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B6360;
+    --text-muted: #A09488;
+    --border: #DDD8CF;
+    --border-strong: #C8C3BA;
+    
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dark {
+    --bg-base: #0D0D0D;
+    --bg-surface: #151515;
+    --bg-elevated: #1A1A1A;
+    --bg-muted: #222222;
+    --accent: #CC342D;
+    --accent-hover: #E03E37;
+    --accent-subtle: #2A1210;
+    --text-primary: #E8E0D5;
+    --text-secondary: #A09488;
+    --text-muted: #5A5250;
+    --border: #2A2A2A;
+    --border-strong: #3A3A3A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 lg:py-24 px-6 md:px-12 lg:px-24;
+  }
+
+  .section-label {
+    @apply flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-accent mb-4;
+  }
+
+  .section-label::before {
+    content: "";
+    @apply block w-8 h-px;
+    background-color: var(--accent);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-strong;
+  }
+  
+  .cursor-blink::after {
+    content: "|";
+    color: var(--accent);
+    @apply ml-1 font-normal;
+    animation: blink 1s step-end infinite;
+  }
+}
+
+.border-color {
+  border-color: var(--border);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@layer base {
+  :root {
+    --bg-base: #FAFAF8;
+    --bg-surface: #F2EFE9;
+    --bg-elevated: #FFFFFF;
+    --bg-muted: #E8E3DA;
+    --accent: #CC342D;
+    --accent-hover: #B02B24;
+    --accent-subtle: #FAEAE9;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B6360;
+    --text-muted: #A09488;
+    --border: #DDD8CF;
+    --border-strong: #C8C3BA;
+    
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dark {
+    --bg-base: #0D0D0D;
+    --bg-surface: #151515;
+    --bg-elevated: #1A1A1A;
+    --bg-muted: #222222;
+    --accent: #CC342D;
+    --accent-hover: #E03E37;
+    --accent-subtle: #2A1210;
+    --text-primary: #E8E0D5;
+    --text-secondary: #A09488;
+    --text-muted: #5A5250;
+    --border: #2A2A2A;
+    --border-strong: #3A3A3A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 lg:py-24 px-6 md:px-12 lg:px-24;
+  }
+
+  .section-label {
+    @apply flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-accent mb-4;
+  }
+
+  .section-label::before {
+    content: "";
+    @apply block w-8 h-px bg-accent;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-border-strong;
+  }
+  
+  .cursor-blink::after {
+    content: "|";
+    @apply text-accent ml-1 font-normal;
+    animation: blink 1s step-end infinite;
+  }
+}
+
+/* Base helper for border convenience */
+.border-color { border-color: var(--border); }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
