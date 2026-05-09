@@ -112,7 +112,7 @@ export default function App() {
           ? 'bg-elevated border-b border-color'
           : 'bg-transparent border-b border-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <a href="#home" className="flex items-center gap-1 group">
               <span className="text-xl font-black text-accent tracking-tight">Rizky</span>
@@ -213,14 +213,16 @@ export default function App() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-all shadow-lg shadow-accent/20"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-all shadow-lg shadow-accent/20"
               >
+                <Mail size={18} />
                 Get in Touch
               </a>
               <a
                 href="#"
-                className="px-8 py-4 border border-accent text-accent hover:bg-accent-subtle transition-all rounded-lg font-semibold"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-accent text-accent hover:bg-accent-subtle transition-all rounded-lg font-semibold"
               >
+                <ArrowRight size={18} className="-rotate-90" />
                 Download CV
               </a>
             </div>
@@ -795,15 +797,15 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0D0D0D] text-[#E8E0D5] pt-20 pb-10 px-6 md:px-12 lg:px-24">
+      <footer className="bg-bg-surface text-text-primary pt-20 pb-10 px-6 md:px-12 lg:px-24" style={{ backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
           <div>
             <a href="#home" className="flex items-center gap-1 group mb-4">
               <span className="text-2xl font-black text-accent tracking-tight">Rizky</span>
-              <span className="text-2xl font-light text-[#E8E0D5] tracking-tight">Pratama</span>
+              <span className="text-2xl font-light text-text-primary tracking-tight">Pratama</span>
               <span className="w-1.5 h-1.5 rounded-full bg-accent mb-0.5 self-end group-hover:scale-125 transition-transform"></span>
             </a>
-            <p className="text-[#A09488] leading-relaxed max-w-xs">
+            <p className="text-text-muted leading-relaxed max-w-xs">
               Building clean, scalable, and performant web applications for business efficiency.
             </p>
           </div>
@@ -812,7 +814,7 @@ export default function App() {
             <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-white">Quick Links</h4>
             <div className="grid grid-cols-2 gap-4">
               {navLinks.map((link) => (
-                <a key={link.id} href={link.href} className="text-[#A09488] hover:text-accent transition-colors text-sm font-medium">
+                <a key={link.id} href={link.href} className="text-text-muted hover:text-accent transition-colors text-sm font-medium">
                   {link.name}
                 </a>
               ))}
@@ -826,7 +828,7 @@ export default function App() {
                 <a 
                   key={idx} 
                   href="#" 
-                  className="w-10 h-10 rounded-lg bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-[#A09488] hover:text-accent hover:border-accent transition-all"
+                  className="w-10 h-10 rounded-lg bg-bg-muted border border-color flex items-center justify-center text-text-muted hover:text-accent hover:border-accent transition-all"
                 >
                   <Icon size={20} />
                 </a>
@@ -835,8 +837,8 @@ export default function App() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto pt-10 border-t border-[#2A2A2A] flex flex-col items-center gap-6">
-          <p className="text-[#5A5250] text-sm text-center">
+        <div className="max-w-7xl mx-auto pt-10 border-t border-color flex flex-col items-center gap-6">
+          <p className="text-text-muted text-sm text-center">
             © 2025 Tama. All rights reserved. Built with Laravel, React & Tailwind CSS.
           </p>
         </div>
