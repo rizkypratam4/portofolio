@@ -38,7 +38,7 @@ export default function App() {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
       setIsScrolled(window.scrollY > 10);
-      
+
       const sections = ['home', 'about', 'skills', 'portfolio', 'experience', 'blog', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -107,13 +107,12 @@ export default function App() {
     <div className="min-h-screen bg-base text-primary selection:bg-accent selection:text-white">
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 md:px-12 lg:px-24 ${isScrolled
             ? "bg-elevated border-b border-color"
             : "bg-transparent border-b border-transparent"
-        }`}
+          }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-0 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <a href="#home" className="flex items-center gap-1 group">
               <span className="text-xl font-black text-accent tracking-tight">
@@ -132,17 +131,15 @@ export default function App() {
               <a
                 key={link.id}
                 href={link.href}
-                className={`text-sm font-medium transition-colors relative py-1 hover:text-accent group ${
-                  activeSection === link.id ? "text-accent" : "text-primary"
-                }`}
+                className={`text-sm font-medium transition-colors relative py-1 hover:text-accent group ${activeSection === link.id ? "text-accent" : "text-primary"
+                  }`}
               >
                 {link.name}
                 <span
-                  className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${
-                    activeSection === link.id
+                  className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${activeSection === link.id
                       ? "w-full"
                       : "w-0 group-hover:w-full"
-                  }`}
+                    }`}
                 ></span>
               </a>
             ))}
@@ -187,9 +184,8 @@ export default function App() {
                     key={link.id}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`text-lg font-medium transition-colors ${
-                      activeSection === link.id ? "text-accent" : "text-primary"
-                    }`}
+                    className={`text-lg font-medium transition-colors ${activeSection === link.id ? "text-accent" : "text-primary"
+                      }`}
                   >
                     {link.name}
                   </a>
@@ -464,11 +460,10 @@ export default function App() {
                   <motion.div
                     key={sIdx}
                     whileHover={{ y: -5, scale: 1.05 }}
-                    className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${
-                      group.style === "accent"
+                    className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${group.style === "accent"
                         ? "bg-accent-subtle text-accent"
                         : "bg-bg-muted text-text-primary"
-                    }`}
+                      }`}
                   >
                     <img
                       src={skill.icon}
@@ -645,9 +640,8 @@ export default function App() {
               <motion.div
                 key={idx}
                 {...fadeIn}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                  idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+                className={`relative flex flex-col md:flex-row items-center gap-8 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
               >
                 {/* Desktop Node */}
                 <div className="absolute left-0 md:left-1/2 top-10 w-4 h-4 bg-accent rounded-full border-4 border-bg-surface z-10 hidden md:block transform -translate-x-1/2 shadow-lg shadow-accent/50"></div>
@@ -760,11 +754,10 @@ export default function App() {
               >
                 <div className="flex items-center justify-between mb-6">
                   <span
-                    className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                      post.categoryStyle === "accent"
+                    className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${post.categoryStyle === "accent"
                         ? "bg-accent-subtle text-accent"
                         : "bg-bg-muted text-text-primary"
-                    }`}
+                      }`}
                   >
                     {post.category}
                   </span>
