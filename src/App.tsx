@@ -357,7 +357,7 @@ export default function App() {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "rizky.pratama.tech@gmail.com",
+                  value: "rizky.pratama.05@outlook.com",
                 },
               ].map((info, idx) => (
                 <div key={idx} className="flex items-center gap-4">
@@ -741,7 +741,7 @@ export default function App() {
               {[
                 {
                   icon: Mail,
-                  value: "rizky.pratama.tech@gmail.com",
+                  value: "rizky.pratama.05@outlook.com",
                   label: "Email",
                 },
                 {
@@ -754,7 +754,7 @@ export default function App() {
                   value: "linkedin.com/in/rizkprtama/",
                   label: "LinkedIn",
                 },
-                { icon: Code, value: "github.com/rizkprtama", label: "GitHub" },
+                { icon: Code, value: "github.com/rizkypratam4", label: "GitHub" },
               ].map((contact, idx) => (
                 <div key={idx} className="flex gap-4 group">
                   <div className="w-12 h-12 rounded-xl bg-accent/5 border border-border-color group-hover:border-accent group-hover:bg-accent/10 flex items-center justify-center text-accent transition-all">
