@@ -29,10 +29,11 @@ export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Contact form state
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,8 +109,8 @@ export default function App() {
       {/* Navbar */}
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 md:px-12 lg:px-24 ${isScrolled
-            ? "bg-elevated border-b border-color"
-            : "bg-transparent border-b border-transparent"
+          ? "bg-elevated border-b border-color"
+          : "bg-transparent border-b border-transparent"
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-0 h-20 flex items-center justify-between">
@@ -137,8 +138,8 @@ export default function App() {
                 {link.name}
                 <span
                   className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${activeSection === link.id
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
                     }`}
                 ></span>
               </a>
@@ -201,7 +202,7 @@ export default function App() {
         className="min-h-screen flex items-center section-padding !pt-28 md:!pt-32"
       >
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* ── Left: Text Content ── */}
+          {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -248,9 +249,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* ── Right: Photo Area ── */}
-          {/* ── Right: Photo Area ── */}
-          {/* ── Right: Photo Area ── */}
+          {/* Right: Photo Area */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -461,8 +460,8 @@ export default function App() {
                     key={sIdx}
                     whileHover={{ y: -5, scale: 1.05 }}
                     className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${group.style === "accent"
-                        ? "bg-accent-subtle text-accent"
-                        : "bg-bg-muted text-text-primary"
+                      ? "bg-accent-subtle text-accent"
+                      : "bg-bg-muted text-text-primary"
                       }`}
                   >
                     <img
@@ -721,7 +720,7 @@ export default function App() {
                 categoryStyle: "accent",
                 readTime: "5 min read",
                 title:
-                  "Optimizing Query Performance in Laravel with Eager Loading",
+                  "Generate QR Code PDF Laravel",
                 description:
                   "A quick guide to avoiding N+1 problems in Laravel by using eager loading correctly.",
                 date: "Jan 15, 2025",
@@ -755,8 +754,8 @@ export default function App() {
                 <div className="flex items-center justify-between mb-6">
                   <span
                     className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${post.categoryStyle === "accent"
-                        ? "bg-accent-subtle text-accent"
-                        : "bg-bg-muted text-text-primary"
+                      ? "bg-accent-subtle text-accent"
+                      : "bg-bg-muted text-text-primary"
                       }`}
                   >
                     {post.category}
