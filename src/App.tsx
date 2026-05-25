@@ -601,7 +601,7 @@ export default function App() {
 
       {[
         {
-          role: "MIS Senior Programmer",
+          role: "IT Infrastructure & Web Developer",
           badge: "Contract",
           company: "PT. Cipta Saksama Indonesia",
           period: "Dec 2025 – Present",
@@ -614,7 +614,7 @@ export default function App() {
           skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
         },
         {
-          role: "IT Programmer",
+          role: "Software Engineer",
           badge: "Contract",
           company: "Massindo Group",
           period: "Jul 2024 – Sept 2025",
@@ -953,7 +953,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto pt-10 border-t border-color flex flex-col items-center gap-6">
           <p className="text-text-muted text-sm text-center">
-            © 2025 Rizky Pratama. All rights reserved. Built with React &
+            © 2026 Rizky Pratama. All rights reserved. Built with React &
             Tailwind CSS.
           </p>
         </div>
