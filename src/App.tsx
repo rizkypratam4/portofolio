@@ -254,7 +254,7 @@ export default function App() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-center"
+            className="relative flex justify-center lg:justify-center mt-5"
           >
             {/* Glow */}
             <div className="absolute inset-0 flex items-center justify-center">
