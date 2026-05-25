@@ -18,6 +18,8 @@ import {
   CheckCircle,
   AlertCircle,
   Loader2,
+  Calendar,
+  Building,
 } from "lucide-react";
 import { motion, AnimatePresence } from 'motion/react';
 import emailjs from '@emailjs/browser';
@@ -33,14 +35,14 @@ export default function App() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const [blogs, setBlogs] = useState([]);
+
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
       setIsScrolled(window.scrollY > 10);
 
-      const sections = ['home', 'about', 'skills', 'portfolio', 'experience', 'blog', 'contact'];
+      const sections = ['home', 'about', 'skills', 'portfolio', 'experience', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -91,9 +93,8 @@ export default function App() {
   const navLinks = [
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Skills', href: '#skills', id: 'skills' },
-    { name: 'Portfolio', href: '#portfolio', id: 'portfolio' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'Experience', href: '#experience', id: 'experience' },
-    { name: 'Blog', href: '#blog', id: 'blog' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
@@ -199,8 +200,7 @@ export default function App() {
 
       <section
         id="home"
-        className="min-h-screen flex items-center section-padding !pt-28 md:!pt-32"
-      >
+        className="min-h-screen flex items-center section-padding !pt-28 md:!pt-32">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text Content */}
           <motion.div
@@ -231,17 +231,17 @@ export default function App() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-all shadow-lg shadow-accent/20"
+               className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-8 sm:py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-all shadow-lg shadow-accent/20 text-sm"
               >
                 <Mail size={18} />
                 Get in Touch
               </a>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-accent text-accent hover:bg-accent-subtle transition-all rounded-lg font-semibold"
+                className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-8 sm:py-4 border border-accent text-accent hover:bg-accent-subtle transition-all rounded-lg font-semibold text-sm"
               >
                 <ArrowRight size={18} className="-rotate-90" />
                 Download CV
@@ -249,7 +249,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* Right: Photo Area */}
+          {/* ── Right: Photo Area ── */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -308,8 +308,8 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-padding bg-base">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <section id="about" className="section-padding-about bg-base">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
           <motion.div {...fadeIn}>
             <div className="section-label">About me</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary">
@@ -326,18 +326,17 @@ export default function App() {
               <p>
                 Proven ability to integrate external systems like fingerprint
                 devices and improve operational efficiency through scalable web
-                solutions. I enjoy solving complex structural problems and
-                turning them into intuitive digital experiences.
+                solutions.
               </p>
             </div>
           </motion.div>
 
           <motion.div
             {...fadeIn}
-            className="bg-bg-surface border border-color rounded-3xl p-6 md:p-10 lg:mt-[2.75rem]"
+            className="bg-bg-surface border border-color rounded-3xl p-6 md:p-10 flex flex-col justify-center"
           >
-            <h3 className="text-xl font-bold mb-4 text-primary">Quick Info</h3>
-            <div className="space-y-5">
+            <h3 className="text-2xl font-bold mb-6 text-primary">Quick Info</h3>
+            <div className="space-y-6 md:space-y-7">
               {[
                 {
                   icon: MapPin,
@@ -361,15 +360,15 @@ export default function App() {
                   value: "rizky.pratama.tech@gmail.com",
                 },
               ].map((info, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="shrink-0 w-9 h-9 rounded-lg bg-bg-muted flex items-center justify-center text-accent">
-                    <info.icon size={16} />
+                <div key={idx} className="flex items-center gap-4">
+                  <div className="shrink-0 w-11 h-11 rounded-xl bg-bg-muted flex items-center justify-center text-accent">
+                    <info.icon size={20} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-xs text-muted font-semibold uppercase tracking-wider mb-0.5">
+                    <div className="text-[11px] md:text-xs text-muted font-semibold uppercase tracking-wider mb-1">
                       {info.label}
                     </div>
-                    <div className="text-primary font-medium text-sm truncate">
+                    <div className="text-primary font-medium text-accent/10 md:text-sm truncate">
                       {info.value}
                     </div>
                   </div>
@@ -482,7 +481,7 @@ export default function App() {
       <section id="portfolio" className="section-padding">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Portfolio</div>
+            <div className="section-label">Projects</div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
               Projects I've built
             </h2>
@@ -581,7 +580,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Work Experience */}
       <section id="experience" className="section-padding bg-surface">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="mb-16">
@@ -594,9 +592,12 @@ export default function App() {
             </p>
           </motion.div>
 
-          <div className="relative space-y-12 pl-8 md:pl-0">
+          <div className="relative space-y-12">
             {/* Timeline Line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border-strong hidden md:block transform -translate-x-1/2"></div>
+            <div 
+              className="absolute left-4 md:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
+              style={{ backgroundColor: 'var(--border-strong)' }}
+            ></div>
 
             {[
               {
@@ -610,6 +611,7 @@ export default function App() {
                   "Developing internal Laravel-based applications to improve business process efficiency.",
                   "Creating project documentation and application user manuals.",
                 ],
+                skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
               },
               {
                 role: "IT Programmer",
@@ -622,6 +624,7 @@ export default function App() {
                   "Providing support and troubleshooting for the JD Edwards (JDE) ERP system.",
                   "Optimizing operational modules to improve system efficiency and stability.",
                 ],
+                skills: ["Ruby on Rails", "Ruby", "JD Edwards ERP", "System Support", "Optimization"],
               },
               {
                 role: "IT Staff",
@@ -634,53 +637,76 @@ export default function App() {
                   "Installing software and configuring networks according to company needs.",
                   "Maintaining and updating the company profile website built with Laravel.",
                 ],
+                skills: ["Laravel", "PHP", "Hardware & Software", "Network Configuration", "Web Maintenance"],
               },
             ].map((exp, idx) => (
               <motion.div
                 key={idx}
                 {...fadeIn}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
+                className="relative pl-10 md:pl-0 md:grid md:grid-cols-[27%_6%_67%] items-start"
               >
-                {/* Desktop Node */}
-                <div className="absolute left-0 md:left-1/2 top-10 w-4 h-4 bg-accent rounded-full border-4 border-bg-surface z-10 hidden md:block transform -translate-x-1/2 shadow-lg shadow-accent/50"></div>
-
-                {/* Mobile Node */}
-                <div className="absolute -left-10 top-10 w-4 h-4 bg-accent rounded-full border-4 border-bg-surface z-10 md:hidden shadow-lg shadow-accent/50"></div>
-                <div className="absolute -left-8 top-0 bottom-0 w-px bg-border-strong md:hidden"></div>
-
-                <div
-                  className={`w-full md:w-[45%] ${idx % 2 === 0 ? "md:text-right md:pr-8 lg:pr-14" : "md:text-left md:pl-8 lg:pl-14"}`}
-                >
-                  <div
-                    className={`flex flex-col ${idx % 2 === 0 ? "md:items-end" : "md:items-start"} mb-2`}
-                  >
-                    <h3 className="text-xl font-bold text-primary">
-                      {exp.role}
-                    </h3>
-                    <span
-                      className="mt-1 px-2 py-0.5 rounded bg-bg-muted text-text-muted text-[10px] font-bold uppercase tracking-wider w-fit"
-                      style={{ border: "1px solid var(--border-strong)" }}
-                    >
-                      {exp.badge}
-                    </span>
-                  </div>
-                  <div className="text-accent font-bold mb-2">
+                {/* 1. Left side (Desktop only, shows Period, Company & Location) */}
+                <div className="hidden md:flex flex-col items-end text-right pr-6 mt-1.5">
+                  <span className="text-accent font-bold text-muted leading-none mb-2 flex items-center gap-1.5 justify-end">
+                    <Calendar size={16} className="shrink-0" />
+                    {exp.period}
+                  </span>
+                  <span className="text-primary font-bold text-sm leading-snug flex items-center gap-1.5 justify-end">
+                    <Building size={14} className="shrink-0" />
                     {exp.company}
-                  </div>
-                  <div
-                    className={`flex flex-col gap-0.5 text-sm text-text-muted ${idx % 2 === 0 ? "md:items-end" : "md:items-start"}`}
-                  >
-                    <span>{exp.period}</span>
-                    <span>{exp.location}</span>
+                  </span>
+                  <span className="text-text-muted text-xs mt-1.5 flex items-center gap-1 justify-end">
+                    <MapPin size={12} className="shrink-0" />
+                    {exp.location}
+                  </span>
+                </div>
+
+                {/* 2. Timeline Node & Line container */}
+                <div className="absolute left-0 md:relative md:left-auto w-8 md:w-auto flex justify-center items-start h-full pt-1.5">
+                  {/* Glow Node */}
+                  <div className="relative flex items-center justify-center">
+                    <span className="absolute w-5 h-5 rounded-full bg-accent/25 animate-ping"></span>
+                    <span className="relative w-4 h-4 rounded-full bg-accent border-4 border-base z-10 shadow-md"></span>
                   </div>
                 </div>
 
-                <div
-                  className={`w-full md:w-[45%] ${idx % 2 === 0 ? "md:pl-8 lg:pl-14" : "md:pr-8 lg:pr-14"}`}
-                >
-                  <div className="p-6 bg-bg-elevated border border-color rounded-2xl shadow-sm">
-                    <ul className="space-y-3">
+                {/* 3. Right side (Mobile/Desktop Content) */}
+                <div className="flex flex-col gap-3">
+                  {/* Mobile Header: Period & Company */}
+                  <div className="flex flex-col md:hidden gap-1.5 mb-1">
+                    <span className="text-accent font-bold text-sm flex items-center gap-1.5">
+                      <Calendar size={14} className="shrink-0" />
+                      {exp.period}
+                    </span>
+                    <div className="flex flex-wrap items-center gap-x-2 text-xs">
+                      <span className="text-primary font-bold flex items-center gap-1">
+                        <Building size={12} className="shrink-0" />
+                        {exp.company}
+                      </span>
+                      <span className="text-text-muted">•</span>
+                      <span className="text-text-muted flex items-center gap-1">
+                        <MapPin size={10} className="shrink-0" />
+                        {exp.location}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Card for Role details & bullets */}
+                  <div className="group p-6 bg-bg-elevated border border-color rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:border-accent/30">
+                    {/* Role Header */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b" style={{ borderColor: 'var(--accent)' }}>
+                      <h3 className="text-lg md:text-xl font-bold text-primary group-hover:text-accent transition-colors">
+                        {exp.role}
+                      </h3>
+                      <span
+                        className="px-2.5 py-0.5 rounded bg-bg-muted text-text-white text-[10px] font-bold uppercase tracking-wider border border-border-strong/20"
+                      >
+                        {exp.badge}
+                      </span>
+                    </div>
+
+                    {/* Bullet points */}
+                    <ul className="space-y-3 mb-5">
                       {exp.bullets.map((bullet, i) => (
                         <li
                           key={i}
@@ -691,6 +717,18 @@ export default function App() {
                         </li>
                       ))}
                     </ul>
+
+                    {/* Skills tags footer */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {exp.skills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-accent/5 dark:bg-accent/10 text-white rounded-md border border-accent/10"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -699,103 +737,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Blog Section */}
-      <section id="blog" className="section-padding bg-base">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Blog</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-              Thoughts, tips, and dev notes
-            </h2>
-            <p className="text-secondary opacity-80 max-w-2xl">
-              Occasional writing about technologies I'm learning and problems
-              I've solved.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                category: "Laravel",
-                categoryStyle: "accent",
-                readTime: "5 min read",
-                title:
-                  "Generate QR Code PDF Laravel",
-                description:
-                  "A quick guide to avoiding N+1 problems in Laravel by using eager loading correctly.",
-                date: "Jan 15, 2025",
-              },
-              {
-                category: "JavaScript",
-                categoryStyle: "muted",
-                readTime: "4 min read",
-                title:
-                  "Understanding JavaScript Promises and Async/Await the Easy Way",
-                description:
-                  "Simplifying asynchronous JavaScript for developers looking to master the modern flow.",
-                date: "Feb 3, 2025",
-              },
-              {
-                category: "Database",
-                categoryStyle: "muted",
-                readTime: "6 min read",
-                title:
-                  "Indexing Strategy in MySQL: When, Why, and How to Use It",
-                description:
-                  "A practical breakdown of MySQL indexing strategies to boost your query execution speed.",
-                date: "Mar 20, 2025",
-              },
-            ].map((post, idx) => (
-              <motion.article
-                key={idx}
-                {...fadeIn}
-                className="group flex flex-col p-8 bg-bg-surface border border-color border-t-2 border-t-accent/20 hover:border-t-accent rounded-3xl card-hover relative overflow-hidden transition-colors duration-300"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <span
-                    className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${post.categoryStyle === "accent"
-                      ? "bg-accent-subtle text-accent"
-                      : "bg-bg-muted text-text-primary"
-                      }`}
-                  >
-                    {post.category}
-                  </span>
-                  <span className="text-[10px] text-text-muted font-semibold uppercase tracking-wider">
-                    {post.readTime}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold mb-4 text-primary group-hover:text-accent transition-colors leading-snug">
-                  {post.title}
-                </h3>
-
-                <p className="text-secondary text-sm mb-8 leading-relaxed line-clamp-3">
-                  {post.description}
-                </p>
-
-                <div className="mt-auto flex items-center justify-between pt-6 border-t border-color/50">
-                  <span className="text-xs text-text-muted font-medium">
-                    {post.date}
-                  </span>
-                  <a
-                    href="#"
-                    className="text-sm font-bold text-accent flex items-center gap-1 group/link"
-                  >
-                    Read More
-                    <ArrowRight
-                      size={14}
-                      className="group-hover/link:translate-x-1 transition-transform"
-                    />
-                  </a>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="section-padding bg-surface">
+      <section id="contact" className="section-padding bg-primary/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
           <motion.div {...fadeIn}>
             <div className="section-label">Contact</div>
@@ -845,7 +788,7 @@ export default function App() {
 
           <motion.div
             {...fadeIn}
-            className="bg-bg-elevated border border-color rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/5"
+            className="bg-bg-surface border border-color rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/5"
           >
             <form ref={formRef} className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -862,7 +805,7 @@ export default function App() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
+                    className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
@@ -878,7 +821,7 @@ export default function App() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
+                    className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -895,7 +838,7 @@ export default function App() {
                   onChange={(e) =>
                     setFormData({ ...formData, subject: e.target.value })
                   }
-                  className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
+                  className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                 />
               </div>
               <div className="space-y-2">
@@ -911,7 +854,7 @@ export default function App() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors resize-none"
+                  className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors resize-none"
                 ></textarea>
               </div>
 
@@ -965,7 +908,7 @@ export default function App() {
       <footer
         className="bg-bg-surface text-text-primary pt-20 pb-10 px-6 md:px-12 lg:px-24"
         style={{
-          backgroundColor: "var(--bg-surface)",
+          backgroundColor: "var(--bg-primary)",
           borderTop: "1px solid var(--border)",
         }}
       >
@@ -987,7 +930,7 @@ export default function App() {
           </div>
 
           <div className="md:justify-self-center">
-            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-white">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 dark:text-white">
               Quick Links
             </h4>
             <div className="grid grid-cols-2 gap-4">
@@ -1004,7 +947,7 @@ export default function App() {
           </div>
 
           <div className="md:justify-self-end">
-            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-white text-left md:text-right">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 dark:text-white">
               Social Media
             </h4>
             <div className="flex gap-4">
