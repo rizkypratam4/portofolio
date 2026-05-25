@@ -361,14 +361,14 @@ export default function App() {
                 },
               ].map((info, idx) => (
                 <div key={idx} className="flex items-center gap-4">
-                  <div className="shrink-0 w-11 h-11 rounded-xl bg-bg-muted flex items-center justify-center text-accent">
-                    <info.icon size={20} />
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-bg-muted flex items-center justify-center text-accent">
+                    <info.icon size={18} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-[11px] md:text-xs text-muted font-semibold uppercase tracking-wider mb-1">
+                    <div className="text-[10px] text-accent font-semibold uppercase tracking-wider mb-0.5">
                       {info.label}
                     </div>
-                    <div className="text-primary font-medium text-accent/10 md:text-sm truncate">
+                    <div className="text-primary font-medium text-sm break-all">
                       {info.value}
                     </div>
                   </div>
@@ -581,161 +581,148 @@ export default function App() {
       </section>
 
       <section id="experience" className="section-padding bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Work Experience</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-              My professional journey
-            </h2>
-            <p className="text-secondary opacity-80 max-w-2xl">
-              Career path spanning different roles and technological challenges.
-            </p>
-          </motion.div>
+  <div className="max-w-7xl mx-auto">
+    <motion.div {...fadeIn} className="mb-16">
+      <div className="section-label">Work Experience</div>
+      <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
+        My professional journey
+      </h2>
+      <p className="text-secondary opacity-80 max-w-2xl">
+        Career path spanning different roles and technological challenges.
+      </p>
+    </motion.div>
 
-          <div className="relative space-y-12">
-            {/* Timeline Line */}
-            <div 
-              className="absolute left-4 md:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
-              style={{ backgroundColor: 'var(--border-strong)' }}
-            ></div>
+    <div className="relative space-y-12">
+      {/* Timeline Line */}
+      <div
+  className="absolute left-4 md:left-[32%] lg:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
+  style={{ backgroundColor: 'var(--border-strong)' }}
+></div>
 
-            {[
-              {
-                role: "MIS Senior Programmer",
-                badge: "Contract",
-                company: "PT. Cipta Saksama Indonesia",
-                period: "Dec 2025 – Present",
-                location: "Cakung, Jakarta Timur",
-                bullets: [
-                  "Handling IT infrastructure troubleshooting (hardware & software) and ensuring smooth daily operations.",
-                  "Developing internal Laravel-based applications to improve business process efficiency.",
-                  "Creating project documentation and application user manuals.",
-                ],
-                skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
-              },
-              {
-                role: "IT Programmer",
-                badge: "Contract",
-                company: "Massindo Group",
-                period: "Jul 2024 – Sept 2025",
-                location: "Bantar Gebang, Kota Bekasi",
-                bullets: [
-                  "Developing and maintaining web applications using Ruby on Rails to support company operations.",
-                  "Providing support and troubleshooting for the JD Edwards (JDE) ERP system.",
-                  "Optimizing operational modules to improve system efficiency and stability.",
-                ],
-                skills: ["Ruby on Rails", "Ruby", "JD Edwards ERP", "System Support", "Optimization"],
-              },
-              {
-                role: "IT Staff",
-                badge: "Contract",
-                company: "PT. Brothersindo Saudara Sejati",
-                period: "Nov 2023 – May 2024",
-                location: "Kemayoran, Jakarta Pusat",
-                bullets: [
-                  "Handling hardware & software troubleshooting and ensuring smooth IT operations.",
-                  "Installing software and configuring networks according to company needs.",
-                  "Maintaining and updating the company profile website built with Laravel.",
-                ],
-                skills: ["Laravel", "PHP", "Hardware & Software", "Network Configuration", "Web Maintenance"],
-              },
-            ].map((exp, idx) => (
-              <motion.div
-                key={idx}
-                {...fadeIn}
-                className="relative pl-10 md:pl-0 md:grid md:grid-cols-[27%_6%_67%] items-start"
-              >
-                {/* 1. Left side (Desktop only, shows Period, Company & Location) */}
-                <div className="hidden md:flex flex-col items-end text-right pr-6 mt-1.5">
-                  <span className="text-accent font-bold text-muted leading-none mb-2 flex items-center gap-1.5 justify-end">
-                    <Calendar size={16} className="shrink-0" />
-                    {exp.period}
-                  </span>
-                  <span className="text-primary font-bold text-sm leading-snug flex items-center gap-1.5 justify-end">
-                    <Building size={14} className="shrink-0" />
-                    {exp.company}
-                  </span>
-                  <span className="text-text-muted text-xs mt-1.5 flex items-center gap-1 justify-end">
-                    <MapPin size={12} className="shrink-0" />
-                    {exp.location}
-                  </span>
-                </div>
-
-                {/* 2. Timeline Node & Line container */}
-                <div className="absolute left-0 md:relative md:left-auto w-8 md:w-auto flex justify-center items-start h-full pt-1.5">
-                  {/* Glow Node */}
-                  <div className="relative flex items-center justify-center">
-                    <span className="absolute w-5 h-5 rounded-full bg-accent/25 animate-ping"></span>
-                    <span className="relative w-4 h-4 rounded-full bg-accent border-4 border-base z-10 shadow-md"></span>
-                  </div>
-                </div>
-
-                {/* 3. Right side (Mobile/Desktop Content) */}
-                <div className="flex flex-col gap-3">
-                  {/* Mobile Header: Period & Company */}
-                  <div className="flex flex-col md:hidden gap-1.5 mb-1">
-                    <span className="text-accent font-bold text-sm flex items-center gap-1.5">
-                      <Calendar size={14} className="shrink-0" />
-                      {exp.period}
-                    </span>
-                    <div className="flex flex-wrap items-center gap-x-2 text-xs">
-                      <span className="text-primary font-bold flex items-center gap-1">
-                        <Building size={12} className="shrink-0" />
-                        {exp.company}
-                      </span>
-                      <span className="text-text-muted">•</span>
-                      <span className="text-text-muted flex items-center gap-1">
-                        <MapPin size={10} className="shrink-0" />
-                        {exp.location}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Card for Role details & bullets */}
-                  <div className="group p-6 bg-bg-elevated border border-color rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:border-accent/30">
-                    {/* Role Header */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b" style={{ borderColor: 'var(--accent)' }}>
-                      <h3 className="text-lg md:text-xl font-bold text-primary group-hover:text-accent transition-colors">
-                        {exp.role}
-                      </h3>
-                      <span
-                        className="px-2.5 py-0.5 rounded bg-bg-muted text-text-white text-[10px] font-bold uppercase tracking-wider border border-border-strong/20"
-                      >
-                        {exp.badge}
-                      </span>
-                    </div>
-
-                    {/* Bullet points */}
-                    <ul className="space-y-3 mb-5">
-                      {exp.bullets.map((bullet, i) => (
-                        <li
-                          key={i}
-                          className="flex gap-3 text-sm text-secondary leading-relaxed"
-                        >
-                          <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Skills tags footer */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {exp.skills.map((skill, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-accent/5 dark:bg-accent/10 text-white rounded-md border border-accent/10"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+      {[
+        {
+          role: "MIS Senior Programmer",
+          badge: "Contract",
+          company: "PT. Cipta Saksama Indonesia",
+          period: "Dec 2025 – Present",
+          location: "Cakung, Jakarta Timur",
+          bullets: [
+            "Handling IT infrastructure troubleshooting (hardware & software) and ensuring smooth daily operations.",
+            "Developing internal Laravel-based applications to improve business process efficiency.",
+            "Creating project documentation and application user manuals.",
+          ],
+          skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
+        },
+        {
+          role: "IT Programmer",
+          badge: "Contract",
+          company: "Massindo Group",
+          period: "Jul 2024 – Sept 2025",
+          location: "Bantar Gebang, Kota Bekasi",
+          bullets: [
+            "Developing and maintaining web applications using Ruby on Rails to support company operations.",
+            "Providing support and troubleshooting for the JD Edwards (JDE) ERP system.",
+            "Optimizing operational modules to improve system efficiency and stability.",
+          ],
+          skills: ["Ruby on Rails", "Ruby", "JD Edwards ERP", "System Support", "Optimization"],
+        },
+        {
+          role: "IT Staff",
+          badge: "Contract",
+          company: "PT. Brothersindo Saudara Sejati",
+          period: "Nov 2023 – May 2024",
+          location: "Kemayoran, Jakarta Pusat",
+          bullets: [
+            "Handling hardware & software troubleshooting and ensuring smooth IT operations.",
+            "Installing software and configuring networks according to company needs.",
+            "Maintaining and updating the company profile website built with Laravel.",
+          ],
+          skills: ["Laravel", "PHP", "Hardware & Software", "Network Configuration", "Web Maintenance"],
+        },
+      ].map((exp, idx) => (
+        <motion.div
+          key={idx}
+          {...fadeIn}
+          className="relative pl-10 md:pl-0 md:grid md:grid-cols-[30%_4%_66%] lg:grid-cols-[27%_6%_67%] items-start"
+        >
+          {/* 1. Left side - Desktop & Tablet */}
+          <div className="hidden md:flex flex-col items-end text-right pr-4 mt-1.5 min-w-0">
+            <span className="text-accent font-bold text-sm leading-none mb-2 flex items-center gap-1.5 justify-end whitespace-nowrap">
+              <Calendar size={14} className="shrink-0" />
+              {exp.period}
+            </span>
+            <span className="text-primary font-bold text-sm leading-snug text-right">
+              {exp.company}
+            </span>
+            <span className="text-muted text-xs mt-1 text-right">
+              {exp.location}
+            </span>
           </div>
-        </div>
-      </section>
+
+          {/* 2. Timeline Node */}
+          <div className="absolute left-0 md:relative md:left-auto w-8 md:w-auto flex justify-center items-start h-full pt-1.5">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute w-5 h-5 rounded-full bg-accent/25 animate-ping"></span>
+              <span className="relative w-4 h-4 rounded-full bg-accent border-4 border-base z-10 shadow-md"></span>
+            </div>
+          </div>
+
+          {/* 3. Right side content */}
+          <div className="flex flex-col gap-3">
+            {/* Mobile Header */}
+            <div className="flex flex-col md:hidden gap-2 mb-2">
+              <span className="text-accent font-bold text-sm flex items-center gap-1.5">
+                <Calendar size={14} className="shrink-0" />
+                {exp.period}
+              </span>
+              <span className="text-primary font-semibold text-sm">
+                {exp.company}
+              </span>
+              <span className="text-muted text-xs">
+                {exp.location}
+              </span>
+            </div>
+
+            {/* Card */}
+            <div className="group p-6 bg-bg-elevated border border-color rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:border-accent/30">
+              {/* Role Header */}
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b" style={{ borderColor: 'var(--accent)' }}>
+                <h3 className="text-lg md:text-xl font-bold text-primary group-hover:text-accent transition-colors">
+                  {exp.role}
+                </h3>
+                <span className="px-2.5 py-0.5 rounded bg-bg-muted text-text-white text-[10px] font-bold uppercase tracking-wider border border-border-strong/20">
+                  {exp.badge}
+                </span>
+              </div>
+
+              {/* Bullet points */}
+              <ul className="space-y-3 mb-5">
+                {exp.bullets.map((bullet, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-secondary leading-relaxed">
+                    <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Skills */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {exp.skills.map((skill, sIdx) => (
+                  <span
+                    key={sIdx}
+                    className="text-[11px] font-semibold px-3 py-1 bg-accent/10 text-accent/10 rounded-full border border-accent/20"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Contact Section */}
       <section id="contact" className="section-padding bg-primary/5">
@@ -966,7 +953,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto pt-10 border-t border-color flex flex-col items-center gap-6">
           <p className="text-text-muted text-sm text-center">
-            © 2025 Tama. All rights reserved. Built with Laravel, React &
+            © 2025 Rizky Pratama. All rights reserved. Built with React &
             Tailwind CSS.
           </p>
         </div>
