@@ -39,7 +39,7 @@ export default function App() {
       setShowScrollTop(window.scrollY > 400);
       setIsScrolled(window.scrollY > 10);
 
-      const sections = ['home', 'about', 'skills', 'portfolio', 'experience', 'blog', 'contact'];
+      const sections = ['home', 'about', 'skills', 'portfolio', 'experience', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -90,9 +90,8 @@ export default function App() {
   const navLinks = [
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Skills', href: '#skills', id: 'skills' },
-    { name: 'Portfolio', href: '#portfolio', id: 'portfolio' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'Experience', href: '#experience', id: 'experience' },
-    { name: 'Blog', href: '#blog', id: 'blog' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
@@ -249,8 +248,6 @@ export default function App() {
           </motion.div>
 
           {/* ── Right: Photo Area ── */}
-          {/* ── Right: Photo Area ── */}
-          {/* ── Right: Photo Area ── */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -309,7 +306,7 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-padding bg-base">
+      <section id="about" className="section-padding-about bg-base">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div {...fadeIn}>
             <div className="section-label">About me</div>
@@ -327,15 +324,14 @@ export default function App() {
               <p>
                 Proven ability to integrate external systems like fingerprint
                 devices and improve operational efficiency through scalable web
-                solutions. I enjoy solving complex structural problems and
-                turning them into intuitive digital experiences.
+                solutions.
               </p>
             </div>
           </motion.div>
 
           <motion.div
             {...fadeIn}
-            className="bg-bg-surface border border-color rounded-3xl p-6 md:p-10 lg:mt-[2.75rem]"
+            className="bg-bg-surface border border-color rounded-3xl p-6 md:p-10"
           >
             <h3 className="text-xl font-bold mb-4 text-primary">Quick Info</h3>
             <div className="space-y-5">
@@ -483,7 +479,7 @@ export default function App() {
       <section id="portfolio" className="section-padding">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Portfolio</div>
+            <div className="section-label">Projects</div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
               Projects I've built
             </h2>
@@ -582,221 +578,106 @@ export default function App() {
         </div>
       </section>
 
-      {/* Work Experience */}
-      <section id="experience" className="section-padding bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Work Experience</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-              My professional journey
-            </h2>
-            <p className="text-secondary opacity-80 max-w-2xl">
-              Career path spanning different roles and technological challenges.
-            </p>
-          </motion.div>
+    <section id="experience" className="section-padding bg-surface">
+      <div className="max-w-7xl mx-auto">
+        <motion.div {...fadeIn} className="mb-16">
+          <div className="section-label">Work Experience</div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
+            My professional journey
+          </h2>
+          <p className="text-secondary opacity-80 max-w-2xl">
+            Career path spanning different roles and technological challenges.
+          </p>
+        </motion.div>
 
-          <div className="relative space-y-12 pl-8 md:pl-0">
-            {/* Timeline Line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border-strong hidden md:block transform -translate-x-1/2"></div>
+        <div className="relative space-y-12 pl-8">
+          {/* Timeline Line — selalu di kiri */}
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-border-strong"></div>
 
-            {[
-              {
-                role: "MIS Senior Programmer",
-                badge: "Contract",
-                company: "PT. Cipta Saksama Indonesia",
-                period: "Dec 2025 – Present",
-                location: "Cakung, Jakarta Timur",
-                bullets: [
-                  "Handling IT infrastructure troubleshooting (hardware & software) and ensuring smooth daily operations.",
-                  "Developing internal Laravel-based applications to improve business process efficiency.",
-                  "Creating project documentation and application user manuals.",
-                ],
-              },
-              {
-                role: "IT Programmer",
-                badge: "Contract",
-                company: "Massindo Group",
-                period: "Jul 2024 – Sept 2025",
-                location: "Bantar Gebang, Kota Bekasi",
-                bullets: [
-                  "Developing and maintaining web applications using Ruby on Rails to support company operations.",
-                  "Providing support and troubleshooting for the JD Edwards (JDE) ERP system.",
-                  "Optimizing operational modules to improve system efficiency and stability.",
-                ],
-              },
-              {
-                role: "IT Staff",
-                badge: "Contract",
-                company: "PT. Brothersindo Saudara Sejati",
-                period: "Nov 2023 – May 2024",
-                location: "Kemayoran, Jakarta Pusat",
-                bullets: [
-                  "Handling hardware & software troubleshooting and ensuring smooth IT operations.",
-                  "Installing software and configuring networks according to company needs.",
-                  "Maintaining and updating the company profile website built with Laravel.",
-                ],
-              },
-            ].map((exp, idx) => (
-              <motion.div
-                key={idx}
-                {...fadeIn}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-              >
-                {/* Desktop Node */}
-                <div className="absolute left-0 md:left-1/2 top-10 w-4 h-4 bg-accent rounded-full border-4 border-bg-surface z-10 hidden md:block transform -translate-x-1/2 shadow-lg shadow-accent/50"></div>
+          {[
+            {
+              role: "MIS Senior Programmer",
+              badge: "Contract",
+              company: "PT. Cipta Saksama Indonesia",
+              period: "Dec 2025 – Present",
+              location: "Cakung, Jakarta Timur",
+              bullets: [
+                "Handling IT infrastructure troubleshooting (hardware & software) and ensuring smooth daily operations.",
+                "Developing internal Laravel-based applications to improve business process efficiency.",
+                "Creating project documentation and application user manuals.",
+              ],
+            },
+            {
+              role: "IT Programmer",
+              badge: "Contract",
+              company: "Massindo Group",
+              period: "Jul 2024 – Sept 2025",
+              location: "Bantar Gebang, Kota Bekasi",
+              bullets: [
+                "Developing and maintaining web applications using Ruby on Rails to support company operations.",
+                "Providing support and troubleshooting for the JD Edwards (JDE) ERP system.",
+                "Optimizing operational modules to improve system efficiency and stability.",
+              ],
+            },
+            {
+              role: "IT Staff",
+              badge: "Contract",
+              company: "PT. Brothersindo Saudara Sejati",
+              period: "Nov 2023 – May 2024",
+              location: "Kemayoran, Jakarta Pusat",
+              bullets: [
+                "Handling hardware & software troubleshooting and ensuring smooth IT operations.",
+                "Installing software and configuring networks according to company needs.",
+                "Maintaining and updating the company profile website built with Laravel.",
+              ],
+            },
+          ].map((exp, idx) => (
+            <motion.div
+              key={idx}
+              {...fadeIn}
+              className="relative flex flex-col"
+            >
+              {/* Timeline Node — selalu di kiri */}
+              <div className="absolute -left-10 top-2 w-4 h-4 bg-accent rounded-full border-4 border-bg-surface z-10 shadow-lg shadow-accent/50"></div>
 
-                {/* Mobile Node */}
-                <div className="absolute -left-10 top-10 w-4 h-4 bg-accent rounded-full border-4 border-bg-surface z-10 md:hidden shadow-lg shadow-accent/50"></div>
-                <div className="absolute -left-8 top-0 bottom-0 w-px bg-border-strong md:hidden"></div>
-
-                <div
-                  className={`w-full md:w-[45%] ${idx % 2 === 0 ? "md:text-right md:pr-8 lg:pr-14" : "md:text-left md:pl-8 lg:pl-14"}`}
+              {/* Meta Info */}
+              <div className="flex flex-col items-start mb-3">
+                <h3 className="text-xl font-bold text-primary">{exp.role}</h3>
+                <span
+                  className="mt-1 px-2 py-0.5 rounded bg-bg-muted text-text-muted text-[10px] font-bold uppercase tracking-wider w-fit"
+                  style={{ border: "1px solid var(--border-strong)" }}
                 >
-                  <div
-                    className={`flex flex-col ${idx % 2 === 0 ? "md:items-end" : "md:items-start"} mb-2`}
-                  >
-                    <h3 className="text-xl font-bold text-primary">
-                      {exp.role}
-                    </h3>
-                    <span
-                      className="mt-1 px-2 py-0.5 rounded bg-bg-muted text-text-muted text-[10px] font-bold uppercase tracking-wider w-fit"
-                      style={{ border: "1px solid var(--border-strong)" }}
+                  {exp.badge}
+                </span>
+                <div className="text-accent font-bold mt-2">{exp.company}</div>
+                <div className="flex flex-col gap-0.5 text-sm text-text-muted mt-1">
+                  <span>{exp.period}</span>
+                  <span>{exp.location}</span>
+                </div>
+              </div>
+
+              {/* Card */}
+              <div className="p-6 bg-bg-elevated border border-color rounded-2xl shadow-sm">
+                <ul className="space-y-3">
+                  {exp.bullets.map((bullet, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-3 text-sm text-secondary leading-relaxed"
                     >
-                      {exp.badge}
-                    </span>
-                  </div>
-                  <div className="text-accent font-bold mb-2">
-                    {exp.company}
-                  </div>
-                  <div
-                    className={`flex flex-col gap-0.5 text-sm text-text-muted ${idx % 2 === 0 ? "md:items-end" : "md:items-start"}`}
-                  >
-                    <span>{exp.period}</span>
-                    <span>{exp.location}</span>
-                  </div>
-                </div>
-
-                <div
-                  className={`w-full md:w-[45%] ${idx % 2 === 0 ? "md:pl-8 lg:pl-14" : "md:pr-8 lg:pr-14"}`}
-                >
-                  <div className="p-6 bg-bg-elevated border border-color rounded-2xl shadow-sm">
-                    <ul className="space-y-3">
-                      {exp.bullets.map((bullet, i) => (
-                        <li
-                          key={i}
-                          className="flex gap-3 text-sm text-secondary leading-relaxed"
-                        >
-                          <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                      <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </section>
-
-      {/* Blog Section */}
-      <section id="blog" className="section-padding bg-base">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Blog</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-              Thoughts, tips, and dev notes
-            </h2>
-            <p className="text-secondary opacity-80 max-w-2xl">
-              Occasional writing about technologies I'm learning and problems
-              I've solved.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                category: "Laravel",
-                categoryStyle: "accent",
-                readTime: "5 min read",
-                title:
-                  "Optimizing Query Performance in Laravel with Eager Loading",
-                description:
-                  "A quick guide to avoiding N+1 problems in Laravel by using eager loading correctly.",
-                date: "Jan 15, 2025",
-              },
-              {
-                category: "JavaScript",
-                categoryStyle: "muted",
-                readTime: "4 min read",
-                title:
-                  "Understanding JavaScript Promises and Async/Await the Easy Way",
-                description:
-                  "Simplifying asynchronous JavaScript for developers looking to master the modern flow.",
-                date: "Feb 3, 2025",
-              },
-              {
-                category: "Database",
-                categoryStyle: "muted",
-                readTime: "6 min read",
-                title:
-                  "Indexing Strategy in MySQL: When, Why, and How to Use It",
-                description:
-                  "A practical breakdown of MySQL indexing strategies to boost your query execution speed.",
-                date: "Mar 20, 2025",
-              },
-            ].map((post, idx) => (
-              <motion.article
-                key={idx}
-                {...fadeIn}
-                className="group flex flex-col p-8 bg-bg-surface border border-color border-t-2 border-t-accent/20 hover:border-t-accent rounded-3xl card-hover relative overflow-hidden transition-colors duration-300"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <span
-                    className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${post.categoryStyle === "accent"
-                        ? "bg-accent-subtle text-accent"
-                        : "bg-bg-muted text-text-primary"
-                      }`}
-                  >
-                    {post.category}
-                  </span>
-                  <span className="text-[10px] text-text-muted font-semibold uppercase tracking-wider">
-                    {post.readTime}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold mb-4 text-primary group-hover:text-accent transition-colors leading-snug">
-                  {post.title}
-                </h3>
-
-                <p className="text-secondary text-sm mb-8 leading-relaxed line-clamp-3">
-                  {post.description}
-                </p>
-
-                <div className="mt-auto flex items-center justify-between pt-6 border-t border-color/50">
-                  <span className="text-xs text-text-muted font-medium">
-                    {post.date}
-                  </span>
-                  <a
-                    href="#"
-                    className="text-sm font-bold text-accent flex items-center gap-1 group/link"
-                  >
-                    Read More
-                    <ArrowRight
-                      size={14}
-                      className="group-hover/link:translate-x-1 transition-transform"
-                    />
-                  </a>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section-padding bg-surface">
+      <section id="contact" className="section-padding bg-primary/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
           <motion.div {...fadeIn}>
             <div className="section-label">Contact</div>
@@ -846,7 +727,7 @@ export default function App() {
 
           <motion.div
             {...fadeIn}
-            className="bg-bg-elevated border border-color rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/5"
+            className="bg-bg-surface border border-color rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/5"
           >
             <form ref={formRef} className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -863,7 +744,7 @@ export default function App() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
+                    className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
@@ -879,7 +760,7 @@ export default function App() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
+                    className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -896,7 +777,7 @@ export default function App() {
                   onChange={(e) =>
                     setFormData({ ...formData, subject: e.target.value })
                   }
-                  className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
+                  className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors"
                 />
               </div>
               <div className="space-y-2">
@@ -912,7 +793,7 @@ export default function App() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-5 py-4 bg-muted border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors resize-none"
+                  className="w-full px-5 py-4 bg-bg-elevated border border-color rounded-xl text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors resize-none"
                 ></textarea>
               </div>
 
@@ -966,7 +847,7 @@ export default function App() {
       <footer
         className="bg-bg-surface text-text-primary pt-20 pb-10 px-6 md:px-12 lg:px-24"
         style={{
-          backgroundColor: "var(--bg-surface)",
+          backgroundColor: "var(--bg-primary)",
           borderTop: "1px solid var(--border)",
         }}
       >
@@ -988,7 +869,7 @@ export default function App() {
           </div>
 
           <div className="md:justify-self-center">
-            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-white">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 dark:text-white">
               Quick Links
             </h4>
             <div className="grid grid-cols-2 gap-4">
@@ -1005,7 +886,7 @@ export default function App() {
           </div>
 
           <div className="md:justify-self-end">
-            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-white text-left md:text-right">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 dark:text-white">
               Social Media
             </h4>
             <div className="flex gap-4">
