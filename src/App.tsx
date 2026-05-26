@@ -19,7 +19,6 @@ import {
   AlertCircle,
   Loader2,
   Calendar,
-  Building,
 } from "lucide-react";
 import { motion, AnimatePresence } from 'motion/react';
 import emailjs from '@emailjs/browser';
