@@ -504,126 +504,119 @@ export default function App() {
     </section>
 
       {/* Portfolio Section */}
-      <section id="projects" className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Projects</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-              Projects I've built
-            </h2>
-            <p className="text-secondary opacity-80 max-w-2xl">
-              A selection of my recent works in enterprise systems and web
-              applications.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            {[
-              {
-                title: "Attendance System",
-                badge: "Web App",
-                image:
-                  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=2000",
-                description:
-                  "A web-based attendance management system for tracking employee check-in/check-out, generating reports, and managing leave requests efficiently.",
-                tech: ["Laravel", "JavaScript", "MySQL", "Tailwind CSS"],
-                links: [
-                  { label: "GitHub", icon: Code, href: "#" },
-                  { label: "Live Demo", icon: ExternalLink, href: "#" },
-                ],
-              },
-              {
-                title: "Production Tracking",
-                badge: "Web App",
-                image:
-                  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2000",
-                description:
-                  "An internal production monitoring system to track manufacturing output, monitor work progress per shift, and generate real-time production reports.",
-                tech: ["Laravel", "JavaScript", "MySQL", "Bootstrap"],
-                links: [
-                  { label: "GitHub", icon: Code, href: "#" },
-                  { label: "Live Demo", icon: ExternalLink, href: "#" },
-                ],
-              },
-            ].map((project, idx) => (
-              <motion.div
-                key={idx}
-                {...fadeIn}
-                className="group flex flex-col bg-bg-surface border border-border-color rounded-[1rem] overflow-hidden card-hover"
-              >
-                <div className="h-64 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-surface to-transparent z-10 opacity-60"></div>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-6 left-6 z-20">
-                    <div className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider">
-                      {project.badge}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-8 md:px-2 md:pt-8 pt-0 -mt-10 relative z-20">
-                  <div className="rounded-3xl p-8">
-                    <h3 className="text-2xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-secondary mb-8 leading-relaxed text-sm">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-4 mb-8">
-                      {project.tech.map((t, i) => (
-                        <span
-                          key={i}
-                          className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted  rounded-full border border-border-color/30"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-6">
-                      {project.links.map((link, i) => (
-                        <a
-                          key={i}
-                          href={link.href}
-                          className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4"
-                        >
-                          <link.icon size={16} />
-                          {link.label}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" className="section-padding bg-surface">
+<section id="projects" className="section-padding">
   <div className="max-w-7xl mx-auto">
     <motion.div {...fadeIn} className="mb-16">
-      <div className="section-label">Work Experience</div>
+      <div className="section-label">Projects</div>
       <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-        My professional journey
+        Projects I've built
       </h2>
       <p className="text-secondary opacity-80 max-w-2xl">
-        Career path spanning different roles and technological challenges.
+        A selection of my recent works in enterprise systems and web
+        applications.
       </p>
     </motion.div>
 
-    <div className="relative space-y-12">
-      {/* Timeline Line */}
-      <div
-  className="absolute left-4 md:left-[32%] lg:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
-  style={{ backgroundColor: 'var(--border-strong)' }}
-></div>
+    <div className="grid md:grid-cols-2 gap-10">
+      {[
+        {
+          title: "Attendance System",
+          image: "/img/attendance_img.png",
+          description:
+            "Syncs fingerprint data to provide real-time attendance statistics — daily headcount, late arrivals, 7-day trends, and department insights. Eliminates manual data processing from third-party HRIS for HRD staff.",
+          tech: ["Laravel", "JavaScript", "MySQL", "Tailwind CSS"],
+          github: "https://github.com/username/attendance-system",
+        },
+        {
+          title: "Production Tracking",
+          image: "/img/production_tracking_img.png",
+          description:
+            "Priority-based production scheduler that displays only the top 10 tasks per operator to prevent out-of-order execution. Provides PPIC and management with completion stats and daily production reports.",
+          tech: ["Laravel", "JavaScript", "MySQL", "Bootstrap"],
+          github: "https://github.com/username/production-tracking",
+        },
+      ].map((project, idx) => (
+        <motion.div
+          key={idx}
+          {...fadeIn}
+          className="group flex flex-col bg-bg-surface border border-border-color rounded-[1rem] overflow-hidden card-hover"
+        >
+          <div className="h-64 overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-surface to-transparent z-10 opacity-60"></div>
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
+              <div className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider">
+                Web App
+              </div>
+              <div className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 text-white/60 text-[9px] font-medium tracking-wide">
+                Personal Rebuild
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-8 md:px-2 md:pt-8 pt-0 -mt-10 relative z-20">
+            <div className="rounded-3xl p-8">
+              <h3 className="text-2xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
+                {project.title}
+              </h3>
+
+              <p className="text-secondary mb-8 leading-relaxed text-sm">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-4 mb-8">
+                {project.tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted rounded-full border border-border-color/30"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-6">
+                
+                <a href={project.github} className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4">
+                  <Code size={16} />
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+     <p className="text-center text-xs text-secondary/40 italic mt-10">
+      * All projects are personal rebuilds inspired by real-world experience at previous companies.
+    </p>
+
+  </div>
+</section>
+     
+
+      <section id="experience" className="section-padding bg-surface">
+        <div className="max-w-7xl mx-auto">
+          <motion.div {...fadeIn} className="mb-16">
+            <div className="section-label">Work Experience</div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
+              My professional journey
+            </h2>
+            <p className="text-secondary opacity-80 max-w-2xl">
+              Career path spanning different roles and technological challenges.
+            </p>
+          </motion.div>
+
+          <div className="relative space-y-12">
+            {/* Timeline Line */}
+            <div
+        className="absolute left-4 md:left-[32%] lg:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
+        style={{ backgroundColor: 'var(--border-strong)' }}
+      ></div>
 
       {[
         {
