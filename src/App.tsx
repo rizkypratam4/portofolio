@@ -18,6 +18,7 @@ import {
   AlertCircle,
   Loader2,
   Calendar,
+  Code2,
 } from "lucide-react";
 import { motion, AnimatePresence } from 'motion/react';
 import emailjs from '@emailjs/browser';
@@ -232,7 +233,7 @@ export default function App() {
             <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start">
               <a
                 href="#contact"
-               className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-8 sm:py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-all shadow-lg shadow-accent/20 text-sm"
+                className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-8 sm:py-4 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-all shadow-lg shadow-accent/20 text-sm"
               >
                 <Mail size={18} />
                 Get in Touch
@@ -307,7 +308,7 @@ export default function App() {
               Crafting Web Apps for Real Businees Needs
             </h2>
             <div className="space-y-6 text-secondary text-lg leading-relaxed">
-                <p>
+              <p>
                 Web Developer specializing in internal enterprise applications
                 using Ruby on Rails and Laravel. Experienced in designing and
                 implementing business-critical modules such as asset management,
@@ -371,233 +372,232 @@ export default function App() {
 
       {/* Skills Section */}
       <section id="skills" className="section-padding bg-surface">
-      <div className="max-w-7xl mx-auto text-center mb-16">
-        <motion.div {...fadeIn}>
-          <div className="section-label justify-center">Skills</div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-            Technologies I work with
-          </h2>
-          <p className="text-secondary opacity-80 max-w-2xl mx-auto">
-            A practical set of technologies I've used across real-world projects
-            and corporate environments.
-          </p>
-        </motion.div>
-      </div>
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <motion.div {...fadeIn}>
+            <div className="section-label justify-center">Skills</div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
+              Technologies I work with
+            </h2>
+            <p className="text-secondary opacity-80 max-w-2xl mx-auto">
+              A practical set of technologies I've used across real-world projects
+              and corporate environments.
+            </p>
+          </motion.div>
+        </div>
 
-      <div className="max-w-5xl mx-auto flex flex-col gap-12">
-        {[
-          {
-            category: "Backend",
-            items: [
-              {
-                name: "Laravel",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
-              },
-              {
-                name: "Ruby on Rails",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg",
-              },
-              {
-                name: "PHP",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-              },
-              {
-                name: "Ruby",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg",
-              },
-            ],
-            style: "accent",
-          },
-          {
-            category: "Frontend",
-            items: [
-              {
-                name: "JavaScript",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-              },
-              {
-                name: "Tailwind CSS",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-              },
-              {
-                name: "Bootstrap",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-              },
-              {
-                name: "HTML",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-              },
-              {
-                name: "CSS",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-              },
-            ],
-            style: "muted",
-          },
-          {
-            category: "Database",
-            items: [
-              {
-                name: "MySQL",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-              },
-              {
-                name: "PostgreSQL",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-              },
-            ],
-            style: "muted",
-          },
-          {
-            category: "Tools & Others",
-            items: [
-              {
-                name: "Git",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-              },
-              {
-                name: "GitHub",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-              },
-              {
-                name: "JD Edwards ERP",
-                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg",
-              },
-            ],
-            style: "muted",
-          },
-        ].map((group, gIdx) => (
-          <motion.div
-            key={gIdx}
-            {...fadeIn}
-            className="flex flex-col items-center"
-          >
-            <div className="mb-6">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 border border-border-color/50 rounded-full bg-bg-surface/50">
-                {group.category}
-              </span>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              {group.items.map((skill, sIdx) => (
-                <motion.div
-                  key={sIdx}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${
-                    group.style === "accent"
+        <div className="max-w-5xl mx-auto flex flex-col gap-12">
+          {[
+            {
+              category: "Backend",
+              items: [
+                {
+                  name: "Laravel",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+                },
+                {
+                  name: "Ruby on Rails",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg",
+                },
+                {
+                  name: "PHP",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+                },
+                {
+                  name: "Ruby",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg",
+                },
+              ],
+              style: "accent",
+            },
+            {
+              category: "Frontend",
+              items: [
+                {
+                  name: "JavaScript",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+                },
+                {
+                  name: "Tailwind CSS",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+                },
+                {
+                  name: "Bootstrap",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+                },
+                {
+                  name: "HTML",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+                },
+                {
+                  name: "CSS",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+                },
+              ],
+              style: "muted",
+            },
+            {
+              category: "Database",
+              items: [
+                {
+                  name: "MySQL",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+                },
+                {
+                  name: "PostgreSQL",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+                },
+              ],
+              style: "muted",
+            },
+            {
+              category: "Tools & Others",
+              items: [
+                {
+                  name: "Git",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+                },
+                {
+                  name: "GitHub",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+                },
+                {
+                  name: "JD Edwards ERP",
+                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg",
+                },
+              ],
+              style: "muted",
+            },
+          ].map((group, gIdx) => (
+            <motion.div
+              key={gIdx}
+              {...fadeIn}
+              className="flex flex-col items-center"
+            >
+              <div className="mb-6">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 border border-border-color/50 rounded-full bg-bg-surface/50">
+                  {group.category}
+                </span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-4">
+                {group.items.map((skill, sIdx) => (
+                  <motion.div
+                    key={sIdx}
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${group.style === "accent"
                       ? "bg-accent-subtle text-accent"
                       : "bg-bg-muted text-text-primary"
-                  }`}
-                >
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    className="w-6 h-6 object-contain group-hover:scale-110 transition-transform"
-                  />
-                  <span className="font-bold text-lg">{skill.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-
-      {/* Portfolio Section */}
-<section id="projects" className="section-padding">
-  <div className="max-w-7xl mx-auto">
-    <motion.div {...fadeIn} className="mb-16">
-      <div className="section-label">Projects</div>
-      <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-        Projects I've built
-      </h2>
-      <p className="text-secondary opacity-80 max-w-2xl">
-        A selection of my recent works in enterprise systems and web
-        applications.
-      </p>
-    </motion.div>
-
-    <div className="grid md:grid-cols-2 gap-10">
-      {[
-        {
-          title: "Attendance System",
-          image: "/img/attendance_img.png",
-          description:
-            "Syncs fingerprint data to provide real-time attendance statistics — daily headcount, late arrivals, 7-day trends, and department insights. Eliminates manual data processing from third-party HRIS for HRD staff.",
-          tech: ["Laravel", "JavaScript", "MySQL", "Tailwind CSS"],
-          github: "https://github.com/username/attendance-system",
-        },
-        {
-          title: "Production Tracking",
-          image: "/img/production_tracking_img.png",
-          description:
-            "Priority-based production scheduler that displays only the top 10 tasks per operator to prevent out-of-order execution. Provides PPIC and management with completion stats and daily production reports.",
-          tech: ["Laravel", "JavaScript", "MySQL", "Bootstrap"],
-          github: "https://github.com/username/production-tracking",
-        },
-      ].map((project, idx) => (
-        <motion.div
-          key={idx}
-          {...fadeIn}
-          className="group flex flex-col bg-bg-surface border border-border-color rounded-[1rem] overflow-hidden card-hover"
-        >
-          <div className="h-64 overflow-hidden relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-surface to-transparent z-10 opacity-60"></div>
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            />
-            <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
-              <div className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider">
-                Web App
-              </div>
-              <div className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 text-white/60 text-[9px] font-medium tracking-wide">
-                Personal Rebuild
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-8 md:px-2 md:pt-8 pt-0 -mt-10 relative z-20">
-            <div className="rounded-3xl p-8">
-              <h3 className="text-2xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
-                {project.title}
-              </h3>
-
-              <p className="text-secondary mb-8 leading-relaxed text-sm">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-4 mb-8">
-                {project.tech.map((t, i) => (
-                  <span
-                    key={i}
-                    className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted rounded-full border border-border-color/30"
+                      }`}
                   >
-                    {t}
-                  </span>
+                    <img
+                      src={skill.icon}
+                      alt={skill.name}
+                      className="w-6 h-6 object-contain group-hover:scale-110 transition-transform"
+                    />
+                    <span className="font-bold text-lg">{skill.name}</span>
+                  </motion.div>
                 ))}
               </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-              <div className="flex items-center gap-6">
-                
-                <a href={project.github} className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4">
-                  <Code size={16} />
-                  GitHub
-                </a>
-              </div>
-            </div>
+      {/* Portfolio Section */}
+      <section id="projects" className="section-padding">
+        <div className="max-w-7xl mx-auto">
+          <motion.div {...fadeIn} className="mb-16">
+            <div className="section-label">Projects</div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
+              Projects I've built
+            </h2>
+            <p className="text-secondary opacity-80 max-w-2xl">
+              A selection of my recent works in enterprise systems and web
+              applications.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {[
+              {
+                title: "Attendance System",
+                image: "/img/attendance_img.png",
+                description:
+                  "Syncs fingerprint data to provide real-time attendance statistics — daily headcount, late arrivals, 7-day trends, and department insights. Eliminates manual data processing from third-party HRIS for HRD staff.",
+                tech: ["Laravel", "JavaScript", "MySQL", "Tailwind CSS"],
+                github: "https://github.com/rizkypratam4/attendance",
+              },
+              {
+                title: "Production Tracking",
+                image: "/img/production_tracking_img.png",
+                description:
+                  "Priority-based production scheduler that displays only the top 10 tasks per operator to prevent out-of-order execution. Provides PPIC and management with completion stats and daily production reports.",
+                tech: ["Laravel", "JavaScript", "MySQL", "Bootstrap"],
+                github: "https://github.com/rizkypratam4/production_tracking",
+              },
+            ].map((project, idx) => (
+              <motion.div
+                key={idx}
+                {...fadeIn}
+                className="group flex flex-col bg-bg-surface border border-border-color rounded-[1rem] overflow-hidden card-hover"
+              >
+                <div className="h-64 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-surface to-transparent z-10 opacity-60"></div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
+                    <div className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider">
+                      Web App
+                    </div>
+                    <div className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 text-white/60 text-[9px] font-medium tracking-wide">
+                      Personal Rebuild
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-8 md:px-2 md:pt-8 pt-0 -mt-10 relative z-20">
+                  <div className="rounded-3xl p-8">
+                    <h3 className="text-2xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-secondary mb-8 leading-relaxed text-sm">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-4 mb-8">
+                      {project.tech.map((t, i) => (
+                        <span
+                          key={i}
+                          className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted rounded-full border border-border-color/30"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center gap-6">
+
+                      <a href={project.github} className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4">
+                        <Code size={16} />
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
-      ))}
-    </div>
-     <p className="text-center text-xs text-secondary/40 italic mt-10">
-      * All projects are personal rebuilds inspired by real-world experience at previous companies.
-    </p>
+          <p className="text-center text-xs text-secondary/40 italic mt-10">
+            * All projects are personal rebuilds inspired by real-world experience at previous companies.
+          </p>
 
-  </div>
-</section>
-     
+        </div>
+      </section>
 
+      {/* Work Experience Section */}
       <section id="experience" className="section-padding bg-surface">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="mb-16">
@@ -606,141 +606,142 @@ export default function App() {
               My professional journey
             </h2>
             <p className="text-secondary opacity-80 max-w-2xl">
-              Career path spanning different roles and technological challenges.
+              Hands-on experience across IT support, web development,
+              and enterprise systems in corporate environments.
             </p>
           </motion.div>
 
           <div className="relative space-y-12">
             {/* Timeline Line */}
             <div
-        className="absolute left-4 md:left-[32%] lg:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
-        style={{ backgroundColor: 'var(--border-strong)' }}
-      ></div>
+              className="absolute left-4 md:left-[32%] lg:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
+              style={{ backgroundColor: 'var(--border-strong)' }}
+            ></div>
 
-      {[
-        {
-          role: "IT Infrastructure & Web Developer",
-          badge: "Contract",
-          company: "PT. Cipta Saksama Indonesia",
-          period: "Dec 2025 – Present",
-          location: "Cakung, Jakarta Timur",
-          bullets: [
-            "Handling IT infrastructure troubleshooting (hardware & software) and ensuring smooth daily operations.",
-            "Developing internal Laravel-based applications to improve business process efficiency.",
-            "Creating project documentation and application user manuals.",
-          ],
-          skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
-        },
-        {
-          role: "Software Engineer",
-          badge: "Contract",
-          company: "Massindo Group",
-          period: "Jul 2024 – Sept 2025",
-          location: "Bantar Gebang, Kota Bekasi",
-          bullets: [
-            "Developing and maintaining web applications using Ruby on Rails to support company operations.",
-            "Providing support and troubleshooting for the JD Edwards (JDE) ERP system.",
-            "Optimizing operational modules to improve system efficiency and stability.",
-          ],
-          skills: ["Ruby on Rails", "Ruby", "JD Edwards ERP", "System Support", "Optimization"],
-        },
-        {
-          role: "IT Staff",
-          badge: "Contract",
-          company: "PT. Brothersindo Saudara Sejati",
-          period: "Nov 2023 – May 2024",
-          location: "Kemayoran, Jakarta Pusat",
-          bullets: [
-            "Handling hardware & software troubleshooting and ensuring smooth IT operations.",
-            "Installing software and configuring networks according to company needs.",
-            "Maintaining and updating the company profile website built with Laravel.",
-          ],
-          skills: ["Laravel", "PHP", "Hardware & Software", "Network Configuration", "Web Maintenance"],
-        },
-      ].map((exp, idx) => (
-        <motion.div
-          key={idx}
-          {...fadeIn}
-          className="relative pl-10 md:pl-0 md:grid md:grid-cols-[30%_4%_66%] lg:grid-cols-[27%_6%_67%] items-start"
-        >
-          {/* 1. Left side - Desktop & Tablet */}
-          <div className="hidden md:flex flex-col items-end text-right pr-4 mt-1.5 min-w-0">
-            <span className="text-accent font-bold text-sm leading-none mb-2 flex items-center gap-1.5 justify-end whitespace-nowrap">
-              <Calendar size={14} className="shrink-0" />
-              {exp.period}
-            </span>
-            <span className="text-primary font-bold text-sm leading-snug text-right">
-              {exp.company}
-            </span>
-            <span className="text-muted text-xs mt-1 text-right">
-              {exp.location}
-            </span>
-          </div>
-
-          {/* 2. Timeline Node */}
-          <div className="absolute left-0 md:relative md:left-auto w-8 md:w-auto flex justify-center items-start h-full pt-1.5">
-            <div className="relative flex items-center justify-center">
-              <span className="absolute w-5 h-5 rounded-full bg-accent/25 animate-ping"></span>
-              <span className="relative w-4 h-4 rounded-full bg-accent border-4 border-base z-10 shadow-md"></span>
-            </div>
-          </div>
-
-          {/* 3. Right side content */}
-          <div className="flex flex-col gap-3">
-            {/* Mobile Header */}
-            <div className="flex flex-col md:hidden gap-2 mb-2">
-              <span className="text-accent font-bold text-sm flex items-center gap-1.5">
-                <Calendar size={14} className="shrink-0" />
-                {exp.period}
-              </span>
-              <span className="text-primary font-semibold text-sm">
-                {exp.company}
-              </span>
-              <span className="text-muted text-xs">
-                {exp.location}
-              </span>
-            </div>
-
-            {/* Card */}
-            <div className="group p-6 bg-bg-elevated border border-color rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:border-accent/30">
-              {/* Role Header */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b" style={{ borderColor: 'var(--accent)' }}>
-                <h3 className="text-lg md:text-xl font-bold text-primary group-hover:text-accent transition-colors">
-                  {exp.role}
-                </h3>
-                <span className="px-2.5 py-0.5 rounded bg-bg-muted text-text-white text-[10px] font-bold uppercase tracking-wider border border-border-strong/20">
-                  {exp.badge}
-                </span>
-              </div>
-
-              {/* Bullet points */}
-              <ul className="space-y-3 mb-5">
-                {exp.bullets.map((bullet, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-secondary leading-relaxed">
-                    <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Skills */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                {exp.skills.map((skill, sIdx) => (
-                  <span
-                    key={sIdx}
-                    className="text-[11px] font-semibold px-3 py-1 bg-accent/10 text-accent/10 rounded-full border border-accent/20"
-                  >
-                    {skill}
+            {[
+              {
+                role: "IT Infrastructure & Web Developer",
+                badge: "Contract",
+                company: "PT. Cipta Saksama Indonesia",
+                period: "Dec 2025 – Present",
+                location: "Cakung, Jakarta Timur",
+                bullets: [
+                  "Troubleshooting hardware & software issues to maintain smooth daily IT operations.",
+                  "Developing internal Laravel-based applications to improve business process efficiency.",
+                  "Creating project documentation and application user manuals.",
+                ],
+                skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
+              },
+              {
+                role: "Software Engineer",
+                badge: "Contract",
+                company: "Massindo Group",
+                period: "Jul 2024 – Sept 2025",
+                location: "Bantar Gebang, Kota Bekasi",
+                bullets: [
+                  "Developed and maintained internal web applications using Ruby on Rails to support company operations.",
+                  "Provided support and troubleshooting for JD Edwards (JDE) ERP system used across departments.",
+                  "Optimized existing modules to improve system performance and operational stability.",
+                ],
+                skills: ["Ruby on Rails", "Ruby", "JD Edwards ERP", "System Support", "Optimization"],
+              },
+              {
+                role: "IT Staff",
+                badge: "Contract",
+                company: "PT. Brothersindo Saudara Sejati",
+                period: "Nov 2023 – May 2024",
+                location: "Kemayoran, Jakarta Pusat",
+                bullets: [
+                  "Handled hardware & software troubleshooting to ensure smooth daily IT operations.",
+                  "Configured networks and installed software based on company requirements.",
+                  "Maintained and updated company profile website built with Laravel.",
+                ],
+                skills: ["Laravel", "PHP", "Hardware & Software", "Network Configuration", "Web Maintenance"],
+              },
+            ].map((exp, idx) => (
+              <motion.div
+                key={idx}
+                {...fadeIn}
+                className="relative pl-10 md:pl-0 md:grid md:grid-cols-[30%_4%_66%] lg:grid-cols-[27%_6%_67%] items-start"
+              >
+                {/* 1. Left side - Desktop & Tablet */}
+                <div className="hidden md:flex flex-col items-end text-right pr-4 mt-1.5 min-w-0">
+                  <span className="text-accent font-bold text-sm leading-none mb-2 flex items-center gap-1.5 justify-end whitespace-nowrap">
+                    <Calendar size={14} className="shrink-0" />
+                    {exp.period}
                   </span>
-                ))}
-              </div>
-            </div>
+                  <span className="text-primary font-bold text-sm leading-snug text-right">
+                    {exp.company}
+                  </span>
+                  <span className="text-muted text-xs mt-1 text-right">
+                    {exp.location}
+                  </span>
+                </div>
+
+                {/* 2. Timeline Node */}
+                <div className="absolute left-0 md:relative md:left-auto w-8 md:w-auto flex justify-center items-start h-full pt-1.5">
+                  <div className="relative flex items-center justify-center">
+                    <span className="absolute w-5 h-5 rounded-full bg-accent/25 animate-ping"></span>
+                    <span className="relative w-4 h-4 rounded-full bg-accent border-4 border-base z-10 shadow-md"></span>
+                  </div>
+                </div>
+
+                {/* 3. Right side content */}
+                <div className="flex flex-col gap-3">
+                  {/* Mobile Header */}
+                  <div className="flex flex-col md:hidden gap-2 mb-2">
+                    <span className="text-accent font-bold text-sm flex items-center gap-1.5">
+                      <Calendar size={14} className="shrink-0" />
+                      {exp.period}
+                    </span>
+                    <span className="text-primary font-semibold text-sm">
+                      {exp.company}
+                    </span>
+                    <span className="text-muted text-xs">
+                      {exp.location}
+                    </span>
+                  </div>
+
+                  {/* Card */}
+                  <div className="group p-6 bg-bg-elevated border border-color rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:border-accent/30">
+                    {/* Role Header */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b" style={{ borderColor: 'var(--accent)' }}>
+                      <h3 className="text-lg md:text-xl font-bold text-primary group-hover:text-accent transition-colors">
+                        {exp.role}
+                      </h3>
+                      <span className="px-2.5 py-0.5 rounded bg-bg-muted text-text-white text-[10px] font-bold uppercase tracking-wider border border-border-strong/20">
+                        {exp.badge}
+                      </span>
+                    </div>
+
+                    {/* Bullet points */}
+                    <ul className="space-y-3 mb-5">
+                      {exp.bullets.map((bullet, i) => (
+                        <li key={i} className="flex gap-3 text-sm text-secondary leading-relaxed">
+                          <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Skills */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {exp.skills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="text-[11px] font-semibold px-3 py-1 bg-accent/10 text-accent/10 rounded-full border border-accent/20"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="section-padding bg-primary/5">
@@ -751,8 +752,8 @@ export default function App() {
               Let's get in touch
             </h2>
             <p className="text-secondary text-lg mb-10 leading-relaxed">
-              Interested in collaborating or have a project to discuss? Feel
-              free to reach out. I'll get back to you as soon as possible.
+              Open to new job opportunities or just want to connect? Feel free
+              to reach out — I'll get back to you as soon as possible.
             </p>
 
             <div className="space-y-6">
@@ -761,20 +762,34 @@ export default function App() {
                   icon: Mail,
                   value: "rizky.pratama.05@outlook.com",
                   label: "Email",
+                  href: "mailto:rizky.pratama.05@outlook.com",
                 },
                 {
                   icon: Phone,
                   value: "+62 812-1169-2806",
                   label: "Phone/WhatsApp",
+                  href: "https://wa.me/6281211692806",
                 },
                 {
                   icon: Briefcase,
                   value: "linkedin.com/in/rizkprtama/",
                   label: "LinkedIn",
+                  href: "https://linkedin.com/in/rizkprtama/",
                 },
-                { icon: Code, value: "github.com/rizkypratam4", label: "GitHub" },
+                {
+                  icon: Code,
+                  value: "github.com/rizkypratam4",
+                  label: "GitHub",
+                  href: "https://github.com/rizkypratam4",
+                },
               ].map((contact, idx) => (
-                <div key={idx} className="flex gap-4 group">
+                <a
+                  key={idx}
+                  href={contact.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-4 group"
+                >
                   <div className="w-12 h-12 rounded-xl bg-accent/5 border border-border-color group-hover:border-accent group-hover:bg-accent/10 flex items-center justify-center text-accent transition-all">
                     <contact.icon size={20} />
                   </div>
@@ -782,11 +797,11 @@ export default function App() {
                     <div className="text-[10px] text-text-muted font-bold uppercase tracking-widest">
                       {contact.label}
                     </div>
-                    <div className="text-text-primary font-medium">
+                    <div className="text-text-primary font-medium group-hover:text-accent transition-colors">
                       {contact.value}
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </motion.div>
@@ -853,7 +868,7 @@ export default function App() {
                 <textarea
                   name="message"
                   rows={4}
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell me about yourself or the opportunity..."
                   required
                   value={formData.message}
                   onChange={(e) =>
@@ -907,7 +922,7 @@ export default function App() {
             </form>
           </motion.div>
         </div>
-      </section>
+      </section >
 
       {/* Footer */}
       <footer
@@ -929,8 +944,8 @@ export default function App() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent mb-0.5 self-end group-hover:scale-125 transition-transform"></span>
             </a>
             <p className="text-text-muted leading-relaxed max-w-xs">
-              Building clean, scalable, and performant web applications for
-              business efficiency.
+              Web Developer & IT professional specializing in internal enterprise
+              applications and business process automation.
             </p>
           </div>
 
@@ -956,13 +971,37 @@ export default function App() {
               Social Media
             </h4>
             <div className="flex gap-4">
-              {[Code, Briefcase, Mail, MessageSquare].map((Icon, idx) => (
+              {[
+                {
+                  icon: Code2,
+                  href: "https://github.com/rizkypratam4",
+                  label: "GitHub",
+                },
+                {
+                  icon: Briefcase,
+                  href: "https://linkedin.com/in/rizkprtama/",
+                  label: "LinkedIn",
+                },
+                {
+                  icon: Mail,
+                  href: "mailto:rizky.pratama.05@outlook.com",
+                  label: "Email",
+                },
+                {
+                  icon: MessageSquare,
+                  href: "https://wa.me/6281211692806",
+                  label: "WhatsApp",
+                },
+              ].map((social, idx) => (
                 <a
                   key={idx}
-                  href="#"
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="w-10 h-10 rounded-lg bg-bg-muted border border-color flex items-center justify-center text-text-muted hover:text-accent hover:border-accent transition-all"
                 >
-                  <Icon size={20} />
+                  <social.icon size={20} />
                 </a>
               ))}
             </div>
@@ -979,18 +1018,20 @@ export default function App() {
 
       {/* Floating Scroll Top */}
       <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-accent-hover transition-colors z-40"
-          >
-            <ChevronUp size={24} />
-          </motion.button>
-        )}
-      </AnimatePresence>
-    </div>
+        {
+          showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="fixed bottom-6 right-6 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-accent-hover transition-colors z-40"
+            >
+              <ChevronUp size={24} />
+            </motion.button>
+          )
+        }
+      </AnimatePresence >
+    </div >
   );
 }
