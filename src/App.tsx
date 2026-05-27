@@ -620,7 +620,7 @@ export default function App() {
 
             {[
               {
-                role: "IT Infrastructure & Web Developer",
+                role: "IT Staff",
                 badge: "Contract",
                 company: "PT. Cipta Saksama Indonesia",
                 period: "Dec 2025 – Present",
@@ -633,7 +633,7 @@ export default function App() {
                 skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
               },
               {
-                role: "Software Engineer",
+                role: "IT Programmer",
                 badge: "Contract",
                 company: "Massindo Group",
                 period: "Jul 2024 – Sept 2025",
