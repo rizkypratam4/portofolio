@@ -19,7 +19,6 @@ import {
   AlertCircle,
   Loader2,
   Calendar,
-  Building,
 } from "lucide-react";
 import { motion, AnimatePresence } from 'motion/react';
 import emailjs from '@emailjs/browser';
@@ -216,18 +215,18 @@ export default function App() {
 
             {/* Headline */}
             <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6 leading-tight">
-              Building Clean &amp; <br />
+              Building Reliable{" "}
               <span className="text-accent underline decoration-accent/30 underline-offset-8">
-                Scalable
+                Enterprise
               </span>{" "}
-              Web Apps
+              Web Solutions
             </h1>
 
             {/* Bio */}
             <p className="text-lg text-secondary mb-10 max-w-lg leading-relaxed">
-              Hi, I'm <span className="text-accent font-semibold">Tama</span> —
-              a Fullstack Developer focused on building efficient and
-              user-friendly applications with modern tech stacks.
+              Hi, I'm <span className="text-accent font-semibold">Rizky</span> —
+              a Web Developer with experience building internal apps using Laravel
+              & Ruby on Rails, and supporting IT infrastructure in corporate environments.
             </p>
 
             {/* CTA Buttons */}
@@ -256,18 +255,13 @@ export default function App() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center lg:justify-center mt-5"
           >
-            {/* Glow */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-[340px] h-[340px] md:w-[420px] md:h-[420px] rounded-full bg-accent/10 blur-3xl" />
             </div>
 
-            {/* Wrapper — dibatasi lebarnya agar tidak melebar ke kanan */}
             <div className="relative w-[300px] md:w-[360px]">
-              {/* Corner accents */}
               <span className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-accent rounded-tl-lg z-10" />
               <span className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-accent rounded-br-lg z-10" />
-
-              {/* Photo */}
               <div className="w-full h-[380px] md:h-[450px] rounded-2xl overflow-hidden border border-border-strong shadow-2xl shadow-accent/10">
                 <img
                   src="/img/hero_image.png"
@@ -276,7 +270,6 @@ export default function App() {
                 />
               </div>
 
-              {/* Badge bawah — di dalam wrapper, tidak overflow */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -287,12 +280,11 @@ export default function App() {
                 <div>
                   <p className="text-xs text-muted leading-none">Experience</p>
                   <p className="text-sm font-bold text-primary leading-tight">
-                    Fullstack Dev
+                    Web Dev
                   </p>
                 </div>
               </motion.div>
 
-              {/* Badge atas — di dalam wrapper, tidak overflow */}
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -313,20 +305,19 @@ export default function App() {
           <motion.div {...fadeIn}>
             <div className="section-label">About me</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary">
-              Focused on High-Performance Internal Systems
+              Crafting Web Apps for Real Businees Needs
             </h2>
             <div className="space-y-6 text-secondary text-lg leading-relaxed">
-              <p>
+                <p>
                 Web Developer specializing in internal enterprise applications
                 using Ruby on Rails and Laravel. Experienced in designing and
                 implementing business-critical modules such as asset management,
-                attendance systems, approval workflows, and operational
-                dashboards.
+                attendance systems, approval workflows, and operational dashboards.
               </p>
               <p>
-                Proven ability to integrate external systems like fingerprint
-                devices and improve operational efficiency through scalable web
-                solutions.
+                Adept at integrating external systems like fingerprint devices and
+                ERP platforms, with additional experience in IT infrastructure
+                support and network configuration in corporate environments.
               </p>
             </div>
           </motion.div>
@@ -381,104 +372,139 @@ export default function App() {
 
       {/* Skills Section */}
       <section id="skills" className="section-padding bg-surface">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <motion.div {...fadeIn}>
-            <div className="section-label justify-center">Skills</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-              Technologies I work with
-            </h2>
-            <p className="text-secondary opacity-80 max-w-2xl mx-auto">
-              I use a modern set of tools to build performant and maintainable
-              applications.
-            </p>
-          </motion.div>
-        </div>
+      <div className="max-w-7xl mx-auto text-center mb-16">
+        <motion.div {...fadeIn}>
+          <div className="section-label justify-center">Skills</div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
+            Technologies I work with
+          </h2>
+          <p className="text-secondary opacity-80 max-w-2xl mx-auto">
+            A practical set of technologies I've used across real-world projects
+            and corporate environments.
+          </p>
+        </motion.div>
+      </div>
 
-        <div className="max-w-5xl mx-auto flex flex-col gap-12">
-          {[
-            {
-              category: "Backend",
-              items: [
-                {
-                  name: "Laravel",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
-                },
-                {
-                  name: "Ruby on Rails",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg",
-                },
-              ],
-              style: "accent",
-            },
-            {
-              category: "Frontend",
-              items: [
-                {
-                  name: "JavaScript",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-                },
-                {
-                  name: "Tailwind CSS",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-                },
-                {
-                  name: "Bootstrap",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-                },
-              ],
-              style: "muted",
-            },
-            {
-              category: "Database",
-              items: [
-                {
-                  name: "MySQL",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-                },
-                {
-                  name: "PostgreSQL",
-                  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-                },
-              ],
-              style: "muted",
-            },
-          ].map((group, gIdx) => (
-            <motion.div
-              key={gIdx}
-              {...fadeIn}
-              className="flex flex-col items-center"
-            >
-              <div className="mb-6">
-                <span className="text-xs font-bold uppercase tracking-[0.2em]  px-4 py-1.5 border border-border-color/50 rounded-full bg-bg-surface/50">
-                  {group.category}
-                </span>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4">
-                {group.items.map((skill, sIdx) => (
-                  <motion.div
-                    key={sIdx}
-                    whileHover={{ y: -5, scale: 1.05 }}
-                    className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${group.style === "accent"
+      <div className="max-w-5xl mx-auto flex flex-col gap-12">
+        {[
+          {
+            category: "Backend",
+            items: [
+              {
+                name: "Laravel",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+              },
+              {
+                name: "Ruby on Rails",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg",
+              },
+              {
+                name: "PHP",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+              },
+              {
+                name: "Ruby",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg",
+              },
+            ],
+            style: "accent",
+          },
+          {
+            category: "Frontend",
+            items: [
+              {
+                name: "JavaScript",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+              },
+              {
+                name: "Tailwind CSS",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+              },
+              {
+                name: "Bootstrap",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+              },
+              {
+                name: "HTML",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+              },
+              {
+                name: "CSS",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+              },
+            ],
+            style: "muted",
+          },
+          {
+            category: "Database",
+            items: [
+              {
+                name: "MySQL",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+              },
+              {
+                name: "PostgreSQL",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+              },
+            ],
+            style: "muted",
+          },
+          {
+            category: "Tools & Others",
+            items: [
+              {
+                name: "Git",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+              },
+              {
+                name: "GitHub",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+              },
+              {
+                name: "JD Edwards ERP",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg",
+              },
+            ],
+            style: "muted",
+          },
+        ].map((group, gIdx) => (
+          <motion.div
+            key={gIdx}
+            {...fadeIn}
+            className="flex flex-col items-center"
+          >
+            <div className="mb-6">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 border border-border-color/50 rounded-full bg-bg-surface/50">
+                {group.category}
+              </span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              {group.items.map((skill, sIdx) => (
+                <motion.div
+                  key={sIdx}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${
+                    group.style === "accent"
                       ? "bg-accent-subtle text-accent"
                       : "bg-bg-muted text-text-primary"
-                      }`}
-                  >
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="w-6 h-6 object-contain group-hover:scale-110 transition-transform"
-                    />
-                    <span className="font-bold text-lg">{skill.name}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+                  }`}
+                >
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-6 h-6 object-contain group-hover:scale-110 transition-transform"
+                  />
+                  <span className="font-bold text-lg">{skill.name}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="section-padding">
+      <section id="projects" className="section-padding">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="mb-16">
             <div className="section-label">Projects</div>
