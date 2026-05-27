@@ -10,7 +10,6 @@ import {
   Wrench,
   Mail,
   Code,
-  ExternalLink,
   ArrowRight,
   ChevronUp,
   MessageSquare,
