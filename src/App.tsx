@@ -239,7 +239,9 @@ export default function App() {
                 Get in Touch
               </a>
               <a
-                href="#"
+                href="/cv/Rizky_Pratama_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-8 sm:py-4 border border-accent text-accent hover:bg-accent-subtle transition-all rounded-lg font-semibold text-sm"
               >
                 <ArrowRight size={18} className="-rotate-90" />
