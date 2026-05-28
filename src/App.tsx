@@ -776,7 +776,7 @@ export default function App() {
                   icon: Briefcase,
                   value: "linkedin.com/in/rizkprtama/",
                   label: "LinkedIn",
-                  href: "https://linkedin.com/in/rizkprtama/",
+                  href: "https://linkedin.com/in/rizkypratam4/",
                 },
                 {
                   icon: Code,
@@ -981,7 +981,7 @@ export default function App() {
                 },
                 {
                   icon: Briefcase,
-                  href: "https://linkedin.com/in/rizkprtama/",
+                  href: "https://linkedin.com/in/rizkypratam4/",
                   label: "LinkedIn",
                 },
                 {
