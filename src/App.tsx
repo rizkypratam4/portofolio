@@ -219,14 +219,15 @@ export default function App() {
               <span className="text-accent underline decoration-accent/30 underline-offset-8">
                 Enterprise
               </span>{" "}
-              Web Solutions
+              App Solutions
             </h1>
 
             {/* Bio */}
             <p className="text-lg text-secondary mb-10 max-w-lg leading-relaxed">
               Hi, I'm <span className="text-accent font-semibold">Rizky</span> —
-              a Web Developer with experience building internal apps using Laravel
-              & Ruby on Rails, and supporting IT infrastructure in corporate environments.
+              an <span className="text-accent font-semibold">Enterprise Application Developer</span> specializing
+              in internal business tools with Laravel & Ruby on Rails, backed by hands-on
+              experience supporting corporate IT infrastructure.
             </p>
 
             {/* CTA Buttons */}
@@ -280,9 +281,9 @@ export default function App() {
               >
                 <span className="text-xl">💻</span>
                 <div>
-                  <p className="text-xs text-muted leading-none">Experience</p>
+                  <p className="text-xs text-muted leading-none">Role</p>
                   <p className="text-sm font-bold text-primary leading-tight">
-                    Web Dev
+                    Enterprise Dev
                   </p>
                 </div>
               </motion.div>
@@ -307,19 +308,21 @@ export default function App() {
           <motion.div {...fadeIn}>
             <div className="section-label">About me</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary">
-              Crafting Web Apps for Real Businees Needs
+              Crafting Apps for Real Business Needs
             </h2>
             <div className="space-y-6 text-secondary text-lg leading-relaxed">
               <p>
-                Web Developer specializing in internal enterprise applications
-                using Ruby on Rails and Laravel. Experienced in designing and
-                implementing business-critical modules such as asset management,
-                attendance systems, approval workflows, and operational dashboards.
+                I'm an Enterprise Application Developer specializing in internal
+                business applications built with Ruby on Rails and Laravel. My focus is on
+                designing and implementing business-critical modules — from asset
+                management and attendance systems to approval workflows and
+                operational dashboards.
               </p>
               <p>
-                Adept at integrating external systems like fingerprint devices and
-                ERP platforms, with additional experience in IT infrastructure
-                support and network configuration in corporate environments.
+                Beyond development, I have hands-on experience integrating external
+                systems such as fingerprint devices and ERP platforms, as well as
+                supporting IT infrastructure and network configuration in corporate
+                environments.
               </p>
             </div>
           </motion.div>
@@ -350,7 +353,7 @@ export default function App() {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "rizky.pratama.05@outlook.com",
+                  value: "rizky.pratama.job@gmail.com",
                 },
               ].map((info, idx) => (
                 <div key={idx} className="flex items-center gap-4">
@@ -762,9 +765,9 @@ export default function App() {
               {[
                 {
                   icon: Mail,
-                  value: "rizky.pratama.05@outlook.com",
+                  value: "rizky.pratama.job@gmail.com",
                   label: "Email",
-                  href: "mailto:rizky.pratama.05@outlook.com",
+                  href: "mailto:rizky.pratama.job@gmail.com",
                 },
                 {
                   icon: Phone,
@@ -986,7 +989,7 @@ export default function App() {
                 },
                 {
                   icon: Mail,
-                  href: "mailto:rizky.pratama.05@outlook.com",
+                  href: "mailto:rizky.pratama.job@gmail.com",
                   label: "Email",
                 },
                 {
