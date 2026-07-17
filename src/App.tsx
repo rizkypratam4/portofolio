@@ -949,8 +949,8 @@ export default function App() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent mb-0.5 self-end group-hover:scale-125 transition-transform"></span>
             </a>
             <p className="text-text-muted leading-relaxed max-w-xs">
-              Web Developer & IT professional specializing in internal enterprise
-              applications and business process automation.
+              Enterprise Application Developer specializing in internal business
+              applications, IT infrastructure, and process automation.
             </p>
           </div>
 
