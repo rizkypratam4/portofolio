@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 import {
   Sun,
   Moon,
@@ -19,29 +19,42 @@ import {
   Loader2,
   Calendar,
   Code2,
+  ExternalLink,
 } from "lucide-react";
-import { motion, AnimatePresence } from 'motion/react';
-import emailjs from '@emailjs/browser';
+import { motion, AnimatePresence } from "motion/react";
+import emailjs from "@emailjs/browser";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-
-
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
       setIsScrolled(window.scrollY > 10);
 
-      const sections = ['home', 'about', 'skills', 'portfolio', 'experience', 'contact'];
+      const sections = [
+        "home",
+        "about",
+        "skills",
+        "portfolio",
+        "experience",
+        "contact",
+      ];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -53,15 +66,15 @@ export default function App() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
 
@@ -71,7 +84,7 @@ export default function App() {
     e.preventDefault();
     if (!formRef.current) return;
 
-    setFormStatus('loading');
+    setFormStatus("loading");
     try {
       await emailjs.sendForm(
         "service_tj0n4uq",
@@ -79,39 +92,40 @@ export default function App() {
         formRef.current,
         "K1iTogragd_yU6bjq",
       );
-      setFormStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setFormStatus('idle'), 5000);
+      setFormStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setFormStatus("idle"), 5000);
     } catch (err) {
-      console.error('EmailJS error:', err);
-      setFormStatus('error');
-      setTimeout(() => setFormStatus('idle'), 5000);
+      console.error("EmailJS error:", err);
+      setFormStatus("error");
+      setTimeout(() => setFormStatus("idle"), 5000);
     }
   };
 
   const navLinks = [
-    { name: 'About', href: '#about', id: 'about' },
-    { name: 'Skills', href: '#skills', id: 'skills' },
-    { name: 'Projects', href: '#projects', id: 'projects' },
-    { name: 'Experience', href: '#experience', id: 'experience' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
+    { name: "About", href: "#about", id: "about" },
+    { name: "Skills", href: "#skills", id: "skills" },
+    { name: "Projects", href: "#projects", id: "projects" },
+    { name: "Experience", href: "#experience", id: "experience" },
+    { name: "Contact", href: "#contact", id: "contact" },
   ];
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
   };
 
   return (
     <div className="min-h-screen bg-base text-primary selection:bg-accent selection:text-white">
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 md:px-12 lg:px-24 ${isScrolled
-          ? "bg-elevated border-b border-color"
-          : "bg-transparent border-b border-transparent"
-          }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 md:px-12 lg:px-24 ${
+          isScrolled
+            ? "bg-elevated border-b border-color"
+            : "bg-transparent border-b border-transparent"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-0 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -132,15 +146,17 @@ export default function App() {
               <a
                 key={link.id}
                 href={link.href}
-                className={`text-sm font-medium transition-colors relative py-1 hover:text-accent group ${activeSection === link.id ? "text-accent" : "text-primary"
-                  }`}
+                className={`text-sm font-medium transition-colors relative py-1 hover:text-accent group ${
+                  activeSection === link.id ? "text-accent" : "text-primary"
+                }`}
               >
                 {link.name}
                 <span
-                  className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${activeSection === link.id
-                    ? "w-full"
-                    : "w-0 group-hover:w-full"
-                    }`}
+                  className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${
+                    activeSection === link.id
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
+                  }`}
                 ></span>
               </a>
             ))}
@@ -185,8 +201,9 @@ export default function App() {
                     key={link.id}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`text-lg font-medium transition-colors ${activeSection === link.id ? "text-accent" : "text-primary"
-                      }`}
+                    className={`text-lg font-medium transition-colors ${
+                      activeSection === link.id ? "text-accent" : "text-primary"
+                    }`}
                   >
                     {link.name}
                   </a>
@@ -199,7 +216,8 @@ export default function App() {
 
       <section
         id="home"
-        className="min-h-screen flex items-center section-padding !pt-28 md:!pt-32">
+        className="min-h-screen flex items-center section-padding !pt-28 md:!pt-32"
+      >
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text Content */}
           <motion.div
@@ -225,9 +243,13 @@ export default function App() {
             {/* Bio */}
             <p className="text-lg text-secondary mb-10 max-w-lg leading-relaxed">
               Hi, I'm <span className="text-accent font-semibold">Rizky</span> —
-              an <span className="text-accent font-semibold">Enterprise Application Developer</span> specializing
-              in internal business tools with Laravel & Ruby on Rails, backed by hands-on
-              experience supporting corporate IT infrastructure.
+              an{" "}
+              <span className="text-accent font-semibold">
+                Enterprise Application Developer
+              </span>{" "}
+              specializing in internal business tools with Laravel & Ruby on
+              Rails, backed by hands-on experience supporting corporate IT
+              infrastructure.
             </p>
 
             {/* CTA Buttons */}
@@ -313,16 +335,16 @@ export default function App() {
             <div className="space-y-6 text-secondary text-lg leading-relaxed">
               <p>
                 I'm an Enterprise Application Developer specializing in internal
-                business applications built with Ruby on Rails and Laravel. My focus is on
-                designing and implementing business-critical modules — from asset
-                management and attendance systems to approval workflows and
-                operational dashboards.
+                business applications built with Ruby on Rails and Laravel. My
+                focus is on designing and implementing business-critical modules
+                — from asset management and attendance systems to approval
+                workflows and operational dashboards.
               </p>
               <p>
-                Beyond development, I have hands-on experience integrating external
-                systems such as fingerprint devices and ERP platforms, as well as
-                supporting IT infrastructure and network configuration in corporate
-                environments.
+                Beyond development, I have hands-on experience integrating
+                external systems such as fingerprint devices and ERP platforms,
+                as well as supporting IT infrastructure and network
+                configuration in corporate environments.
               </p>
             </div>
           </motion.div>
@@ -384,8 +406,8 @@ export default function App() {
               Technologies I work with
             </h2>
             <p className="text-secondary opacity-80 max-w-2xl mx-auto">
-              A practical set of technologies I've used across real-world projects
-              and corporate environments.
+              A practical set of technologies I've used across real-world
+              projects and corporate environments.
             </p>
           </motion.div>
         </div>
@@ -488,10 +510,11 @@ export default function App() {
                   <motion.div
                     key={sIdx}
                     whileHover={{ y: -5, scale: 1.05 }}
-                    className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${group.style === "accent"
-                      ? "bg-accent-subtle text-accent"
-                      : "bg-bg-muted text-text-primary"
-                      }`}
+                    className={`px-6 py-4 rounded-2xl border border-border-color shadow-sm transition-all duration-300 hover:shadow-xl hover:border-accent/40 flex items-center gap-4 group ${
+                      group.style === "accent"
+                        ? "bg-accent-subtle text-accent"
+                        : "bg-bg-muted text-text-primary"
+                    }`}
                   >
                     <img
                       src={skill.icon}
@@ -507,100 +530,127 @@ export default function App() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="projects" className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeIn} className="mb-16">
-            <div className="section-label">Projects</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
-              Projects I've built
-            </h2>
-            <p className="text-secondary opacity-80 max-w-2xl">
-              A selection of my recent works in enterprise systems and web
-              applications.
-            </p>
-          </motion.div>
+<section id="projects" className="section-padding">
+  <div className="max-w-7xl mx-auto">
+    <motion.div {...fadeIn} className="mb-16">
+      <div className="section-label">Projects</div>
+      <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary">
+        Projects I've built
+      </h2>
+      <p className="text-secondary opacity-80 max-w-2xl">
+        A selection of my recent works in enterprise systems and web
+        applications.
+      </p>
+    </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-10">
-            {[
-              {
-                title: "Attendance System",
-                image: "/img/attendance_img.png",
-                description:
-                  "Syncs fingerprint data to provide real-time attendance statistics — daily headcount, late arrivals, 7-day trends, and department insights. Eliminates manual data processing from third-party HRIS for HRD staff.",
-                tech: ["Laravel", "JavaScript", "MySQL", "Tailwind CSS"],
-                github: "https://github.com/rizkypratam4/attendance",
-              },
-              {
-                title: "Production Tracking",
-                image: "/img/production_tracking_img.png",
-                description:
-                  "Priority-based production scheduler that displays only the top 10 tasks per operator to prevent out-of-order execution. Provides PPIC and management with completion stats and daily production reports.",
-                tech: ["Laravel", "JavaScript", "MySQL", "Bootstrap"],
-                github: "https://github.com/rizkypratam4/production_tracking",
-              },
-            ].map((project, idx) => (
-              <motion.div
-                key={idx}
-                {...fadeIn}
-                className="group flex flex-col bg-bg-surface border border-border-color rounded-[1rem] overflow-hidden card-hover"
-              >
-                <div className="h-64 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-surface to-transparent z-10 opacity-60"></div>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
-                    <div className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider">
-                      Web App
-                    </div>
-                    <div className="px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 text-white/60 text-[9px] font-medium tracking-wide">
-                      Personal Rebuild
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-8 md:px-2 md:pt-8 pt-0 -mt-10 relative z-20">
-                  <div className="rounded-3xl p-8">
-                    <h3 className="text-2xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-secondary mb-8 leading-relaxed text-sm">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-4 mb-8">
-                      {project.tech.map((t, i) => (
-                        <span
-                          key={i}
-                          className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted rounded-full border border-border-color/30"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-6">
-
-                      <a href={project.github} className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4">
-                        <Code size={16} />
-                        GitHub
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+      {[
+        {
+          title: "Attendance System",
+          image: "/img/attendance_img.png",
+          description:
+            "Syncs fingerprint data to provide real-time attendance statistics — daily headcount, late arrivals, 7-day trends, and department insights. Eliminates manual data processing from third-party HRIS for HRD staff.",
+          tech: ["Laravel", "JavaScript", "MySQL", "Tailwind CSS"],
+          github: "https://github.com/rizkypratam4/attendance",
+          badge: "Personal Rebuild",
+        },
+        {
+          title: "Production Tracking",
+          image: "/img/production_tracking_img.png",
+          description:
+            "Priority-based production scheduler that displays only the top 10 tasks per operator to prevent out-of-order execution. Provides PPIC and management with completion stats and daily production reports.",
+          tech: ["Laravel", "JavaScript", "MySQL", "Bootstrap"],
+          github: "https://github.com/rizkypratam4/production_tracking",
+          badge: "Personal Rebuild",
+        },
+        {
+          title: "Ardi Garage",
+          image: "/img/ardi_garage_img.png",
+          description:
+            "Company profile website for a custom motorcycle workshop in Bekasi — service listings with a live cost estimator, project gallery with lightbox, and WhatsApp-first booking flow. Built with Next.js App Router and a component-driven architecture.",
+          tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+          github: "https://github.com/rizkypratam4/ardi-garage",
+          liveUrl: "https://ardi-garage.vercel.app/",
+          badge: "Client Project",
+        },
+      ].map((project, idx) => (
+        <motion.div
+          key={idx}
+          {...fadeIn}
+          className="group flex flex-col h-full bg-bg-surface border border-border-color rounded-2xl overflow-hidden card-hover"
+        >
+          {/* Image */}
+          <div className="h-56 md:h-60 overflow-hidden relative shrink-0">
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-surface via-bg-surface/10 to-transparent z-10" />
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+              <span className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                Web App
+              </span>
+              <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-white/80 text-[9px] font-medium tracking-wide">
+                {project.badge}
+              </span>
+            </div>
           </div>
-          <p className="text-center text-xs text-secondary/40 italic mt-10">
-            * All projects are personal rebuilds inspired by real-world experience at previous companies.
-          </p>
 
-        </div>
-      </section>
+          {/* Content — flex-1 keeps all cards equal height, footer sticks to bottom */}
+          <div className="flex flex-col flex-1 px-6 py-8">
+            <h3 className="text-xl md:text-2xl font-bold mb-3 text-primary group-hover:text-accent transition-colors">
+              {project.title}
+            </h3>
+
+            <p className="text-secondary text-sm leading-relaxed mb-6 flex-1">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tech.map((t, i) => (
+                <span
+                  key={i}
+                  className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted rounded-full border border-border-color/30"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-6 pt-4 border-t border-border-color/20">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4"
+                >
+                  <ExternalLink size={16} />
+                  Live Site
+                </a>
+              )}
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4"
+              >
+                <Code size={16} />
+                GitHub
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    <p className="text-center text-xs text-secondary/40 italic mt-10">
+      * Personal rebuilds are recreations inspired by real-world
+      experience at previous companies.
+    </p>
+  </div>
+</section>
 
       {/* Work Experience Section */}
       <section id="experience" className="section-padding bg-surface">
@@ -611,8 +661,8 @@ export default function App() {
               My professional journey
             </h2>
             <p className="text-secondary opacity-80 max-w-2xl">
-              Hands-on experience across IT support, web development,
-              and enterprise systems in corporate environments.
+              Hands-on experience across IT support, web development, and
+              enterprise systems in corporate environments.
             </p>
           </motion.div>
 
@@ -620,7 +670,7 @@ export default function App() {
             {/* Timeline Line */}
             <div
               className="absolute left-4 md:left-[32%] lg:left-[30%] top-2 bottom-2 w-[2px] transform md:-translate-x-1/2"
-              style={{ backgroundColor: 'var(--border-strong)' }}
+              style={{ backgroundColor: "var(--border-strong)" }}
             ></div>
 
             {[
@@ -635,7 +685,13 @@ export default function App() {
                   "Developing internal Laravel-based applications to improve business process efficiency.",
                   "Creating project documentation and application user manuals.",
                 ],
-                skills: ["Laravel", "PHP", "IT Infrastructure", "System Troubleshooting", "Documentation"],
+                skills: [
+                  "Laravel",
+                  "PHP",
+                  "IT Infrastructure",
+                  "System Troubleshooting",
+                  "Documentation",
+                ],
               },
               {
                 role: "IT Programmer",
@@ -648,7 +704,13 @@ export default function App() {
                   "Provided support and troubleshooting for JD Edwards (JDE) ERP system used across departments.",
                   "Optimized existing modules to improve system performance and operational stability.",
                 ],
-                skills: ["Ruby on Rails", "Ruby", "JD Edwards ERP", "System Support", "Optimization"],
+                skills: [
+                  "Ruby on Rails",
+                  "Ruby",
+                  "JD Edwards ERP",
+                  "System Support",
+                  "Optimization",
+                ],
               },
               {
                 role: "IT Staff",
@@ -661,7 +723,13 @@ export default function App() {
                   "Configured networks and installed software based on company requirements.",
                   "Maintained and updated company profile website built with Laravel.",
                 ],
-                skills: ["Laravel", "PHP", "Hardware & Software", "Network Configuration", "Web Maintenance"],
+                skills: [
+                  "Laravel",
+                  "PHP",
+                  "Hardware & Software",
+                  "Network Configuration",
+                  "Web Maintenance",
+                ],
               },
             ].map((exp, idx) => (
               <motion.div
@@ -702,15 +770,16 @@ export default function App() {
                     <span className="text-primary font-semibold text-sm">
                       {exp.company}
                     </span>
-                    <span className="text-muted text-xs">
-                      {exp.location}
-                    </span>
+                    <span className="text-muted text-xs">{exp.location}</span>
                   </div>
 
                   {/* Card */}
                   <div className="group p-6 bg-bg-elevated border border-color rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 hover:border-accent/30">
                     {/* Role Header */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b" style={{ borderColor: 'var(--accent)' }}>
+                    <div
+                      className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b"
+                      style={{ borderColor: "var(--accent)" }}
+                    >
                       <h3 className="text-lg md:text-xl font-bold text-primary group-hover:text-accent transition-colors">
                         {exp.role}
                       </h3>
@@ -722,7 +791,10 @@ export default function App() {
                     {/* Bullet points */}
                     <ul className="space-y-3 mb-5">
                       {exp.bullets.map((bullet, i) => (
-                        <li key={i} className="flex gap-3 text-sm text-secondary leading-relaxed">
+                        <li
+                          key={i}
+                          className="flex gap-3 text-sm text-secondary leading-relaxed"
+                        >
                           <span className="mt-1.5 w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>
                           {bullet}
                         </li>
@@ -927,7 +999,7 @@ export default function App() {
             </form>
           </motion.div>
         </div>
-      </section >
+      </section>
 
       {/* Footer */}
       <footer
@@ -1023,20 +1095,18 @@ export default function App() {
 
       {/* Floating Scroll Top */}
       <AnimatePresence>
-        {
-          showScrollTop && (
-            <motion.button
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="fixed bottom-6 right-6 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-accent-hover transition-colors z-40"
-            >
-              <ChevronUp size={24} />
-            </motion.button>
-          )
-        }
-      </AnimatePresence >
-    </div >
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-6 right-6 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-accent-hover transition-colors z-40"
+          >
+            <ChevronUp size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
