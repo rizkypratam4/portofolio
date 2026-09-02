@@ -573,76 +573,83 @@ export default function App() {
           liveUrl: "https://ardi-garage.vercel.app/",
           badge: "Client Project",
         },
-      ].map((project, idx) => (
-        <motion.div
-          key={idx}
-          {...fadeIn}
-          className="group flex flex-col h-full bg-bg-surface border border-border-color rounded-2xl overflow-hidden card-hover"
-        >
-          {/* Image */}
-          <div className="h-56 md:h-60 overflow-hidden relative shrink-0">
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-surface via-bg-surface/10 to-transparent z-10" />
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                Web App
-              </span>
-              <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-white/80 text-[9px] font-medium tracking-wide">
-                {project.badge}
-              </span>
-            </div>
-          </div>
+      ].map((project, idx, arr) => {
+        const isLast = idx === arr.length - 1;
+        const isOdd = arr.length % 2 !== 0;
 
-          {/* Content — flex-1 keeps all cards equal height, footer sticks to bottom */}
-          <div className="flex flex-col flex-1 px-6 py-8">
-            <h3 className="text-xl md:text-2xl font-bold mb-3 text-primary group-hover:text-accent transition-colors">
-              {project.title}
-            </h3>
-
-            <p className="text-secondary text-sm leading-relaxed mb-6 flex-1">
-              {project.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tech.map((t, i) => (
-                <span
-                  key={i}
-                  className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted rounded-full border border-border-color/30"
-                >
-                  {t}
+        return (
+          <motion.div
+            key={idx}
+            {...fadeIn}
+            className={`group flex flex-col h-full bg-bg-surface border border-border-color rounded-2xl overflow-hidden card-hover ${
+              isLast && isOdd ? "md:col-span-2 lg:col-span-1" : ""
+            }`}
+          >
+            {/* Image */}
+            <div className="h-56 md:h-60 overflow-hidden relative shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-surface via-bg-surface/10 to-transparent z-10" />
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                  Web App
                 </span>
-              ))}
+                <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-white/80 text-[9px] font-medium tracking-wide">
+                  {project.badge}
+                </span>
+              </div>
             </div>
 
-            <div className="flex items-center gap-6 pt-4 border-t border-border-color/20">
-              {project.liveUrl && (
+            {/* Content — flex-1 keeps all cards equal height, footer sticks to bottom */}
+            <div className="flex flex-col flex-1 px-6 py-8">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-primary group-hover:text-accent transition-colors">
+                {project.title}
+              </h3>
+
+              <p className="text-secondary text-sm leading-relaxed mb-6 flex-1">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 bg-bg-muted rounded-full border border-border-color/30"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-6 pt-4 border-t border-border-color/20">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4"
+                  >
+                    <ExternalLink size={16} />
+                    Live Site
+                  </a>
+                )}
                 <a
-                  href={project.liveUrl}
+                  href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4"
                 >
-                  <ExternalLink size={16} />
-                  Live Site
+                  <Code size={16} />
+                  GitHub
                 </a>
-              )}
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-bold text-accent hover:underline underline-offset-4"
-              >
-                <Code size={16} />
-                GitHub
-              </a>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      ))}
+          </motion.div>
+        );
+      })}
     </div>
 
     <p className="text-center text-xs text-secondary/40 italic mt-10">
